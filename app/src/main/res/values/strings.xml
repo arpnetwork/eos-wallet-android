@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">EOSWallet</string>
+
+    <string name="exit_app">再按一次退出程序</string>
+    <string name="tab_wallet">钱包</string>
+    <string name="tab_explore">探索</string>
+    <string name="tab_mine">我的</string>
+</resources>
