@@ -9,10 +9,10 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
         android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:background="@android:color/holo_blue_dark"
-        app:navigationIcon="@null"
+        app:navigationIcon="@drawable/nav_back"
         app:titleTextAppearance="@style/TitleTextAppearance">
 
         <TextView
@@ -20,8 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textColor="@color/title_text_color"
-            android:textSize="@dimen/title_text_size" />
+            android:textColor="@color/navigation_title_text_color"
+            android:textSize="@dimen/navigation_title_text_size" />
     </android.support.v7.widget.Toolbar>
 
     <FrameLayout
@@ -29,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.0" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

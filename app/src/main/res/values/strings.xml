@@ -1,8 +1,63 @@
 <resources>
     <string name="app_name">EOSWallet</string>
+    <string name="eos">EOS</string>
 
     <string name="exit_app">再按一次退出程序</string>
     <string name="tab_wallet">钱包</string>
     <string name="tab_explore">探索</string>
     <string name="tab_mine">我的</string>
+    <string name="personal_center">个人中心</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+
+    <!--钱包-->
+    <string name="total_assets">总资产折合</string>
+    <string name="receipt">收款</string>
+    <string name="transfer">转账</string>
+
+    <!--转账-->
+    <string name="receipt_account">收款账号</string>
+    <string name="input_account_hint">输入账号或长按粘贴地址</string>
+    <string name="transfer_amount">转账数量</string>
+    <string name="available_eos">可用 %f EOS</string>
+    <string name="input_amount_hint">请输入金额</string>
+    <string name="remarks">备注</string>
+    <string name="all">全部</string>
+    <string name="confirm">确认</string>
+    <string name="scanner_title">扫码</string>
+    <string name="scanner_tip">请将镜头对准二维码进行扫描</string>
+    <string name="required_camera_permission">请在权限设置中勾选允许相机</string>
+
+    <!--收款页面-->
+    <string name="receipt_title">正在接收EOS</string>
+    <string name="receipt_tail">扫描二维码，向我付款</string>
+    <string name="share_to_friend">分享给好友</string>
+    <string name="copy">复制</string>
+
+    <!--导入页面-->
+    <string name="my_wallet">我的钱包</string>
+    <string name="wallet_type">钱包体系</string>
+    <string name="do_you_have_account">你是否有账号?</string>
+    <string name="have_account">我有账号</string>
+    <string name="have_no_account">我没有账号</string>
+    <string name="import_account">导入账号</string>
+    <string name="create_account">创建账号</string>
+
+    <!--创建账号-->
+    <string name="create_tip_1">*密码用于保护私钥和交易授权，强度非常重要</string>
+    <string name="create_tip_2">*EOS Wallet 不储存密码，而无法帮您找回，请务必牢记</string>
+    <string name="wallet_type_eos">钱包体系：EOS底层</string>
+    <string name="account_name">账号名称：</string>
+    <string name="set_password">设置密码：</string>
+    <string name="confirm_password">确认密码：</string>
+    <string name="i_have_read">我已仔细阅读并同意</string>
+    <string name="server_licence">服务即隐私条款</string>
+    <string name="create_wallet">创建钱包</string>
+    <string name="password_type_1">弱</string>
+    <string name="password_type_2">中</string>
+    <string name="password_type_3">强</string>
+    <string name="illegal_password">密法请勿包含非法字符</string>
+    <string name="password_confirm_failed">两次输入密码不相同，请检查</string>
+    <string name="enter_password">请输入密码</string>
+    <string name="enter_account_name">请输入账户名称</string>
 </resources>

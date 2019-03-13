@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import org.arpnetwork.eoswallet.HomeActivity;
 import org.arpnetwork.eoswallet.R;
+import org.arpnetwork.eoswallet.ui.wallet.launch.LaunchActivity;
 import org.arpnetwork.eoswallet.util.UIHelper;
 
 import org.slf4j.Logger;
@@ -24,6 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
     private TextView mTitleView;
+    private View mTitleDividerView;
     private OnBackListener mOnBackListener;
 
     private long mExitTime = 0;
@@ -114,6 +116,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mTitleView = (TextView) findViewById(R.id.tv_title);
+        mTitleDividerView = findViewById(R.id.tv_title_divider);
     }
 
     protected void setToolbar(Toolbar toolbar) {
@@ -130,6 +133,21 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void hideToolbar() {
         mToolbar.setVisibility(View.GONE);
+    }
+
+    public void hideNavigationButton() {
+        mToolbar.setNavigationIcon(null);
+    }
+
+    public void hideTitleDivider() {
+        mTitleDividerView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setTitle(int titleId) {
+        super.setTitle("");
+
+        mTitleView.setText(titleId);
     }
 
     @Override
@@ -168,13 +186,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void onBackPressed() {
         boolean pressed = onBack();
         if (!pressed) {
-            if ((this instanceof HomeActivity) && (System.currentTimeMillis() - mExitTime) > 2000) {
+            if (isRootActivity() && (System.currentTimeMillis() - mExitTime) > 2000) {
                 UIHelper.showToast(getApplicationContext(), R.string.exit_app, Toast.LENGTH_SHORT);
                 mExitTime = System.currentTimeMillis();
             } else {
                 super.onBackPressed();
 
-                if (this instanceof HomeActivity) {
+                if (isRootActivity()) {
                     exit();
                 }
             }
@@ -191,5 +209,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public interface OnBackListener {
         public boolean onBacked();
+    }
+
+    public boolean isRootActivity() {
+        return this instanceof HomeActivity || this instanceof LaunchActivity;
     }
 }

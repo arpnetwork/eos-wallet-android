@@ -4,13 +4,17 @@
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <!--<item name="android:fitsSystemWindows">false</item>-->
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+        <!--<item name="android:windowTranslucentNavigation">true</item>-->
+        <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
         <item name="actionBarSize">@dimen/action_bar_height</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
         <!--<item name="homeAsUpIndicator">@drawable/btn_back</item>-->
-        <!--<item name="android:windowBackground">@color/window_background</item>-->
+        <item name="android:windowBackground">@color/window_background</item>
     </style>
 
     <style name="Toolbar" parent="Theme.AppCompat">
@@ -22,6 +26,35 @@
     </style>
 
     <style name="TitleTextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">@color/navigation_title_text_color</item>
+    </style>
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">#7d7d7d</item>
+    </style>
+
+
+    <!--创建钱包-->
+    <style name="SingleLineItemLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="ItemTitleTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
         <item name="android:textColor">@color/title_text_color</item>
+        <item name="android:textSize">@dimen/item_title_text_size</item>
+    </style>
+    <style name="ItemEditTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/title_text_color</item>
+        <item name="android:textSize">@dimen/item_title_text_size</item>
     </style>
 </resources>

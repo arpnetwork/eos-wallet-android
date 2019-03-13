@@ -2,20 +2,53 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.arpnetwork.eoswallet">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
+        android:name=".app.EOSWalletApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppBaseTheme">
-        <activity android:name="org.arpnetwork.eoswallet.HomeActivity">
+
+        <activity android:name=".ui.wallet.launch.LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.ReceiptActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.transfer.TransferActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".qr.QRCodeScannerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.wallet.create.CreateWalletActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.wallet.load.ImportWalletActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

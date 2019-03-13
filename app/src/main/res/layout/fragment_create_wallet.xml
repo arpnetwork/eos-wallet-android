@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/horizontal_margin"
+        android:paddingRight="@dimen/horizontal_margin">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/tip_text_size"
+            android:textColor="@color/tip_text_color"
+            android:text="@string/create_tip_1"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="@dimen/tip_text_size"
+            android:textColor="@color/tip_text_color"
+            android:text="@string/create_tip_2"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/horizontal_margin"
+        android:paddingRight="@dimen/horizontal_margin"
+        android:background="@android:color/white">
+
+        <LinearLayout style="@style/SingleLineItemLayout">
+            <TextView
+                style="@style/ItemTitleTextView"
+                android:text="@string/wallet_type_eos"/>
+        </LinearLayout>
+        <View style="@style/Divider" />
+
+        <LinearLayout style="@style/SingleLineItemLayout">
+            <TextView
+                style="@style/ItemTitleTextView"
+                android:text="@string/account_name"/>
+
+            <EditText
+                android:id="@+id/et_account_name"
+                style="@style/ItemEditTextView"/>
+
+        </LinearLayout>
+        <View style="@style/Divider" />
+
+        <LinearLayout style="@style/SingleLineItemLayout">
+            <TextView
+                style="@style/ItemTitleTextView"
+                android:text="@string/set_password"/>
+            <EditText
+                android:id="@+id/et_password"
+                style="@style/ItemEditTextView"
+                android:inputType="textPassword"/>
+
+            <ImageView
+                android:id="@+id/iv_password_type"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"
+                android:src="@drawable/password_type_3"/>
+
+            <TextView
+                android:id="@+id/tv_password_type"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:textSize="@dimen/tip_text_size"
+                android:gravity="center"
+                android:visibility="gone"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/password_type_3"/>
+
+            <CheckBox
+                android:id="@+id/cb_password_visible"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_gravity="center"
+                android:button="@drawable/btn_show_password"/>
+        </LinearLayout>
+        <View style="@style/Divider" />
+
+        <LinearLayout
+            style="@style/SingleLineItemLayout">
+            <TextView
+                style="@style/ItemTitleTextView"
+                android:text="@string/confirm_password"/>
+
+            <EditText
+                android:id="@+id/et_confirm_password"
+                style="@style/ItemEditTextView"
+                android:inputType="textPassword"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="@dimen/horizontal_margin"
+        android:paddingRight="@dimen/horizontal_margin"
+        android:orientation="horizontal">
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/tip_text_size"
+            android:textColor="@color/tip_text_color"
+            android:button="@drawable/btn_checkbox"
+            android:paddingLeft="5dp"
+            android:text="@string/i_have_read"/>
+        <TextView
+            android:id="@+id/btn_licence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/tip_text_size"
+            android:text="@string/server_licence"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_create_wallet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:layout_marginLeft="@dimen/horizontal_margin"
+        android:layout_marginRight="@dimen/horizontal_margin"
+        android:background="@drawable/btn_round_corner_bg"
+        android:textColor="@android:color/white"
+        android:text="@string/create_wallet"/>
+
+</LinearLayout>

@@ -3,7 +3,6 @@ package org.arpnetwork.eoswallet;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,7 +14,7 @@ import org.arpnetwork.eoswallet.base.BaseActivity;
 import org.arpnetwork.eoswallet.ui.explore.ExploreFragment;
 import org.arpnetwork.eoswallet.ui.mine.MineFragment;
 import org.arpnetwork.eoswallet.ui.wallet.WalletFragment;
-import org.arpnetwork.eoswallet.wedgit.OnTabReselectListener;
+import org.arpnetwork.eoswallet.widget.OnTabReselectListener;
 
 public class HomeActivity extends BaseActivity {
 
@@ -25,7 +24,6 @@ public class HomeActivity extends BaseActivity {
 
     private LayoutInflater mLayoutInflater;
     private FragmentTabHost mTabHost;
-    private TextView mTitleView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +37,9 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
-        mTitleView = findViewById(R.id.tv_title);
-        mTitleView.setText(getString(R.string.tab_wallet));
+        super.initViews();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        setToolbar(toolbar);
-        getSupportActionBar().setTitle(null);
-//        hideToolbar();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         mLayoutInflater = LayoutInflater.from(this);
 
@@ -86,13 +79,6 @@ public class HomeActivity extends BaseActivity {
                 }
             });
         }
-
-        mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-            @Override
-            public void onTabChanged(String tabId) {
-                mTitleView.setText(tabId);
-            }
-        });
     }
 
 

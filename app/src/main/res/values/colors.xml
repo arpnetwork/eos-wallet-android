@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="window_background">#f3f3f8</color>
+    <color name="colorPrimary">#3D7CF5</color>
+    <color name="colorPrimaryDark">#3D7CF5</color>
+    <color name="colorAccent">#3D7CF5</color>
 
-    <color name="title_text_color">#000000</color>
-    <color name="title_bar_color">#00FF00</color>
+    <color name="navigation_title_text_color">#ffffff</color>
+    <color name="title_text_color">#333333</color>
 
     <color name="title_divider">#c7c7c7</color>
     <color name="main_title_text_color">#2e2e2e</color>
 
     <color name="tab_text_normal">#4a4a4a</color>
     <color name="tab_text_pressed">@color/colorPrimary</color>
+
+    <color name="tip_text_color">#9A9A9A</color>
+    <color name="password_type_1_text">#ff0000</color>
+    <color name="password_type_2_text">#00ffff</color>
+    <color name="password_type_3_text">#44E134</color>
 </resources>

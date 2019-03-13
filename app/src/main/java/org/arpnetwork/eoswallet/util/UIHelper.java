@@ -21,6 +21,18 @@ public class UIHelper {
 
     private static Toast sToast = null;
 
+    public static void showToast(Context context, int textId) {
+        if (context == null) return;
+
+        if (sToast == null) {
+            sToast = Toast.makeText(context, textId, Toast.LENGTH_SHORT);
+        } else {
+            sToast.setText(textId);
+        }
+
+        sToast.show();
+    }
+
     public static void showToast(Context context, CharSequence text) {
         if (context == null) return;
 

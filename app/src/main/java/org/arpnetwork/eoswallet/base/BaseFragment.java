@@ -3,6 +3,7 @@ package org.arpnetwork.eoswallet.base;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -175,6 +176,18 @@ public abstract class BaseFragment extends Fragment {
         FragmentTransaction t = mContext.getSupportFragmentManager().beginTransaction();
         t.replace(R.id.content_frame, fragment);
         t.commit();
+    }
+
+    protected void startActivity(Class<?> cls) {
+        startActivity(cls, null);
+    }
+
+    protected void startActivity(Class<?> cls, Bundle bundle) {
+        Intent intent = new Intent(getActivity(), cls);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        startActivity(intent);
     }
 
     protected void hideSoftInput(View view) {

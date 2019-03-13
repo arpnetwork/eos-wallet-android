@@ -1,4 +1,4 @@
-package org.arpnetwork.eoswallet.wedgit;
+package org.arpnetwork.eoswallet.widget;
 
 public interface OnTabReselectListener {
 

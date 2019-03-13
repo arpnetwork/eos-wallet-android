@@ -1,11 +1,292 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/layout_assets"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tab_wallet" />
+        android:background="@color/colorPrimary"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_account"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/arrow_down"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:text="HelloWallet"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/total_assets"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/round_corner_bg"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="EOS"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/ib_show_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="22dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/icon_show_pwd" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_total_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="688.9934"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/tv_cny"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="2dp"
+            android:text="≈7335.68 CNY"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_receipt_transfer"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_below="@id/layout_assets"
+        android:background="@android:color/white"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:id="@+id/layout_receipt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_receipt"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_receipt" />
+
+            <TextView
+                android:id="@+id/tv_receipt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="收款"
+                android:textColor="#5a5b5c"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="25dp"
+            android:background="#d8d8d8" />
+
+        <LinearLayout
+            android:id="@+id/layout_transfer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_transfer"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_transfer" />
+
+            <TextView
+                android:id="@+id/tv_transfer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="转账"
+                android:textColor="#5a5b5c"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_eos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_receipt_transfer"
+        android:layout_marginTop="6dp"
+        android:background="@android:color/white"
+        android:paddingBottom="11dp"
+        android:paddingTop="11dp">
+
+        <ImageView
+            android:id="@+id/iv_eos"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/icon_eos" />
+
+        <TextView
+            android:id="@+id/tv_eos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_eos"
+            android:text="EOS"
+            android:textColor="#333333"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_eos_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_eos"
+            android:layout_below="@id/tv_eos"
+            android:text="¥12.64"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_eos_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:text="688.9934"
+            android:textColor="#333333"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/tv_eos_amount"
+            android:layout_below="@+id/tv_eos_amount"
+            android:text="≈7335.68"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_usde"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_eos"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"
+        android:paddingBottom="11dp"
+        android:paddingTop="11dp">
+
+        <ImageView
+            android:id="@+id/iv_usde"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/icon_usde" />
+
+        <TextView
+            android:id="@+id/tv_usde"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@id/iv_usde"
+            android:text="USDE"
+            android:textColor="#333333"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_usde_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_usde"
+            android:layout_below="@id/tv_usde"
+            android:text="¥12.64"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_usde_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="2dp"
+            android:text="688.9934"
+            android:textColor="#333333"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/tv_usde_amount"
+            android:layout_below="@+id/tv_usde_amount"
+            android:text="≈7335.68"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_resource"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/btn_resource_bg"
+        android:drawablePadding="-5dp"
+        android:drawableTop="@drawable/icon_resource"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:paddingTop="10dp"
+        android:text="资源"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="10sp" />
+</RelativeLayout>
