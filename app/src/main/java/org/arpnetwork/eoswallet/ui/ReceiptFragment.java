@@ -8,11 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.arpnetwork.eoswallet.R;
 import org.arpnetwork.eoswallet.base.BaseFragment;
 import org.arpnetwork.eoswallet.util.QRCodeUtil;
 import org.arpnetwork.eoswallet.util.UIHelper;
-
-import org.arpnetwork.eoswallet.R;
 
 public class ReceiptFragment extends BaseFragment {
     private String mContent;

@@ -24,6 +24,8 @@
     <string name="remarks">备注</string>
     <string name="all">全部</string>
     <string name="confirm">确认</string>
+
+    <!--扫描-->
     <string name="scanner_title">扫码</string>
     <string name="scanner_tip">请将镜头对准二维码进行扫描</string>
     <string name="required_camera_permission">请在权限设置中勾选允许相机</string>
@@ -33,6 +35,12 @@
     <string name="receipt_tail">扫描二维码，向我付款</string>
     <string name="share_to_friend">分享给好友</string>
     <string name="copy">复制</string>
+
+    <!--币详情-->
+    <string name="assets_format">%s资产</string>
+    <string name="total_assets_format">总资产(%s)</string>
+    <string name="current_price">当前价格 %s/CNY</string>
+    <string name="trade_record">交易记录</string>
 
     <!--导入页面-->
     <string name="my_wallet">我的钱包</string>
@@ -60,4 +68,34 @@
     <string name="password_confirm_failed">两次输入密码不相同，请检查</string>
     <string name="enter_password">请输入密码</string>
     <string name="enter_account_name">请输入账户名称</string>
+
+    <!--导入钱包-->
+    <string name="import_wallet">导入钱包</string>
+    <string name="enter_private_key">请输入钱包私钥……</string>
+    <string name="tip_for_password">提示信息：</string>
+    <string name="start_import">开始导入</string>
+    <string name="enter_password_tip">请输入密码提示信息</string>
+    <string name="check_policy">请仔细阅读并同意服务即隐私条款</string>
+
+    <!--检验私钥-->
+    <string name="check_private_key">检验私钥</string>
+    <string name="check_account">根据公钥检测账号</string>
+
+    <!--备份私钥-->
+    <string name="backup_private_key">备份私钥</string>
+    <string name="copy_your_private_key">抄写下你的钱包私钥</string>
+    <string name="copy_your_private_key_detail">私钥用于恢复钱包或重置钱包密码，将它准确地抄写在纸上，并存放在只有你知道地安全地地方。请注意：空格只是为了方便抄写，私钥本身不包含空格。</string>
+    <string name="remembered">我记住了</string>
+    <string name="check_your_private_key">确认你的钱包私钥</string>
+    <string name="check_your_private_key_detail">请输入钱包私钥，验证备份的私钥是否正确</string>
+    <string name="next_step">下一步</string>
+    <string name="no_photo_title">请勿截图</string>
+    <string name="no_photo_detail_1">*如果有人获得了你的私钥将直接获取你的资产！</string>
+    <string name="no_photo_detail_2">*请抄写下并存放在安全的地方</string>
+    <string name="known">我知道了</string>
+    <string name="key_error">无效的私钥地址\n请确认是否抄写正确</string>
+    <string name="illegal_private_key">私钥输入错误</string>
+    <string name="check_failed">私钥验证错误\n请重新确认</string>
+    <string name="check_success">备份成功</string>
 </resources>
+

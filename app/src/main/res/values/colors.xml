@@ -18,4 +18,6 @@
     <color name="password_type_1_text">#ff0000</color>
     <color name="password_type_2_text">#00ffff</color>
     <color name="password_type_3_text">#44E134</color>
+    <color name="tab_indicator_text_normal">#666666</color>
+    <color name="tab_indicator_text_pressed">#396BF2</color>
 </resources>

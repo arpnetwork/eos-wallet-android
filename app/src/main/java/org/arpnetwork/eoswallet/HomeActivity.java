@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import org.arpnetwork.eoswallet.R;
+
 import org.arpnetwork.eoswallet.base.BaseActivity;
 import org.arpnetwork.eoswallet.ui.explore.ExploreFragment;
 import org.arpnetwork.eoswallet.ui.mine.MineFragment;

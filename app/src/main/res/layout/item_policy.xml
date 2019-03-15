@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <CheckBox
+        android:id="@+id/cb_policy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tip_text_size"
+        android:textColor="@color/tip_text_color"
+        android:paddingLeft="5dp"
+        android:text="@string/i_have_read"/>
+
+    <!--android:button="@drawable/btn_checkbox"-->
+
+    <TextView
+        android:id="@+id/btn_policy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/tip_text_size"
+        android:text="@string/server_licence"/>
+</LinearLayout>

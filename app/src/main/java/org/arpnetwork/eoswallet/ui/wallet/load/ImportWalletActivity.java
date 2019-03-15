@@ -4,13 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import org.arpnetwork.eoswallet.R;
 import org.arpnetwork.eoswallet.base.BaseActivity;
 
 public class ImportWalletActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setTitle(R.string.import_wallet);
         setContentFragment(ImportWalletFragment.class);
     }
 

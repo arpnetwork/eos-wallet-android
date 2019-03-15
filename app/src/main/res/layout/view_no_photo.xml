@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_background"
+    android:paddingLeft="@dimen/horizontal_margin"
+    android:paddingRight="@dimen/horizontal_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/no_photo"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="@color/title_text_color"
+            android:textStyle="bold"
+            android:text="@string/no_photo_title" />
+
+        <TextView
+            android:id="@+id/tv_detail_1"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="13sp"
+            android:textColor="#666666"
+            android:text="@string/no_photo_detail_1" />
+        <TextView
+            android:id="@+id/tv_detail_2"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="13sp"
+            android:textColor="#666666"
+            android:text="@string/no_photo_detail_2" />
+
+        <Button
+            android:id="@+id/btn_known"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42dp"
+            android:background="@drawable/btn_round_corner_bg"
+            android:textColor="@android:color/white"
+            android:text="@string/known"/>
+    </LinearLayout>
+
+
+
+</FrameLayout>

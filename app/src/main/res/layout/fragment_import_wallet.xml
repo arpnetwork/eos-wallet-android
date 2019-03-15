@@ -12,21 +12,15 @@
         android:orientation="vertical"
         android:paddingLeft="@dimen/horizontal_margin"
         android:paddingRight="@dimen/horizontal_margin">
-
-        <TextView
+        <EditText
+            android:id="@+id/et_private_key"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/tip_text_size"
-            android:textColor="@color/tip_text_color"
-            android:text="@string/create_tip_1"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:textSize="@dimen/tip_text_size"
-            android:textColor="@color/tip_text_color"
-            android:text="@string/create_tip_2"/>
+            android:layout_height="98dp"
+            android:padding="15dp"
+            android:textSize="@dimen/item_title_text_size"
+            android:hint="@string/enter_private_key"
+            android:background="@drawable/edit_text_big_bg"
+            android:elevation="3dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -45,22 +39,22 @@
         </LinearLayout>
         <View style="@style/Divider" />
 
+        <org.arpnetwork.eoswallet.ui.wallet.PasswordView
+            android:id="@+id/v_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View style="@style/Divider" />
         <LinearLayout style="@style/SingleLineItemLayout">
             <TextView
                 style="@style/ItemTitleTextView"
-                android:text="@string/account_name"/>
+                android:text="@string/tip_for_password"/>
 
             <EditText
-                android:id="@+id/et_account_name"
+                android:id="@+id/et_password_tip"
                 style="@style/ItemEditTextView"/>
 
         </LinearLayout>
-        <View style="@style/Divider" />
-
-       <org.arpnetwork.eoswallet.ui.wallet.PasswordView
-           android:id="@+id/v_password"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content" />
     </LinearLayout>
 
     <org.arpnetwork.eoswallet.ui.wallet.CheckPolicyView
@@ -72,7 +66,7 @@
         android:paddingRight="@dimen/horizontal_margin" />
 
     <Button
-        android:id="@+id/btn_create_wallet"
+        android:id="@+id/btn_import"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
@@ -80,6 +74,6 @@
         android:layout_marginRight="@dimen/horizontal_margin"
         android:background="@drawable/btn_round_corner_bg"
         android:textColor="@android:color/white"
-        android:text="@string/create_wallet"/>
+        android:text="@string/start_import"/>
 
 </LinearLayout>

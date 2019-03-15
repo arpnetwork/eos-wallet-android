@@ -9,9 +9,18 @@ import org.arpnetwork.eoswallet.R;
 import org.arpnetwork.eoswallet.base.BaseFragment;
 
 public class MineFragment extends BaseFragment {
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         return inflater.inflate(R.layout.fragment_mine, container, false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        setTitle(R.string.personal_center);
+        getBaseActivity().showToolbar();
     }
 }

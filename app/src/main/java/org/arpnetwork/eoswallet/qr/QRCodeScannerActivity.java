@@ -72,7 +72,7 @@ public class QRCodeScannerActivity extends AppCompatActivity implements QRCodeRe
         }
         if (isContain) {
             Intent intent = new Intent();
-            intent.putExtra(Constant.ACTIVITY_RESULT_KEY_ADDRESS, text);
+            intent.putExtra(Constant.SCAN_RESULT, text);
             setResult(0, intent);
             finish();
         }

@@ -5,8 +5,15 @@ import android.content.Context;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.arpnetwork.eoswallet.R;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +27,7 @@ public class UIHelper {
     private static final Logger LOG = LoggerFactory.getLogger(UIHelper.class);
 
     private static Toast sToast = null;
+    private static Toast sImageToast = null;
 
     public static void showToast(Context context, int textId) {
         if (context == null) return;
@@ -55,6 +63,28 @@ public class UIHelper {
         }
 
         sToast.show();
+    }
+
+    public static void showImageToast(Context context, int imageId, int textId) {
+        if (context == null) return;
+
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.item_image_toast, null);
+        ImageView imageView = view.findViewById(R.id.iv_toast);
+        TextView textView = view.findViewById(R.id.tv_toast);
+
+        if (sImageToast == null) {
+            sImageToast = new Toast(context);
+            sImageToast.setDuration(Toast.LENGTH_SHORT);
+            sImageToast.setView(view);
+            sImageToast.setGravity(Gravity.CENTER, 0, 0);
+        } else {
+            sImageToast.setView(view);
+        }
+        imageView.setImageResource(imageId);
+        textView.setText(textId);
+
+        sImageToast.show();
     }
 
     public static int getResourceIdForName(String res) {
@@ -162,4 +192,5 @@ public class UIHelper {
         }
 
     }
+
 }

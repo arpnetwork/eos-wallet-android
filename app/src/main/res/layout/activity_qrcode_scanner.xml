@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.example.eoswallet.widget.QRCoverView
+    <org.arpnetwork.eoswallet.widget.QRCoverView
         android:id="@+id/qr_cover_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

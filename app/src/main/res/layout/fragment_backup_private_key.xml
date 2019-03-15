@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fl_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/horizontal_margin"
+        android:paddingRight="@dimen/horizontal_margin">
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="@color/title_text_color"
+            android:textStyle="bold"
+            android:text="@string/copy_your_private_key" />
+
+        <TextView
+            android:id="@+id/tv_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:gravity="center"
+            android:textSize="13sp"
+            android:textColor="#666666"
+            android:text="@string/copy_your_private_key_detail" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/et_private_key"
+                android:layout_width="match_parent"
+                android:layout_height="98dp"
+                android:padding="15dp"
+                android:textSize="@dimen/item_title_text_size"
+                android:hint="@string/enter_private_key"
+                android:background="@drawable/edit_text_big_bg"
+                android:elevation="3dp"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_next_step"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42dp"
+            android:background="@drawable/btn_round_corner_bg"
+            android:textColor="@android:color/white"
+            android:text="@string/remembered"/>
+    </LinearLayout>
+</FrameLayout>
