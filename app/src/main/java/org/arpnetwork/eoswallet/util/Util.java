@@ -2,6 +2,9 @@ package org.arpnetwork.eoswallet.util;
 
 import android.text.TextUtils;
 
+import org.arpnetwork.eoswallet.blockchain.util.GsonEosTypeAdapterFactory;
+import com.google.gson.GsonBuilder;
+
 public class Util {
     /**
      * 判断密码强度
@@ -28,5 +31,12 @@ public class Util {
             return 3;
         }
         return -1;
+    }
+
+    public static String prettyPrintJson(Object object) {
+        return new GsonBuilder()
+                .registerTypeAdapterFactory(new GsonEosTypeAdapterFactory())
+                .excludeFieldsWithoutExposeAnnotation()
+                .setPrettyPrinting().create().toJson( object );
     }
 }

@@ -40,15 +40,23 @@
             android:name=".ui.transfer.TransferActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".ui.detail.DetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".qr.QRCodeScannerActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.wallet.create.CreateWalletActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".ui.wallet.create.BackupPrivateKeyActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ui.wallet.load.ImportWalletActivity"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".ui.wallet.load.CheckAccountActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

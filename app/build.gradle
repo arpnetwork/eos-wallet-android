@@ -25,9 +25,16 @@ dependencies {
 
     implementation 'org.slf4j:slf4j-simple:1.7.25'
     implementation 'com.dlazaro66.qrcodereaderview:qrcodereaderview:2.0.3'
+
     implementation ('com.github.ksoichiro:android-observablescrollview:1.6.0') {
         exclude module: 'support-v4'
     }
+
+    //网络请求
+    implementation 'com.lzy.net:okgo:3.0.1'
+    //gson解析
+    implementation 'com.google.code.gson:gson:2.8.1'
+    implementation 'com.google.guava:guava:23.0-android'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation ('com.android.support.test:runner:1.0.2') {
@@ -35,4 +42,3 @@ dependencies {
     }
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
-
