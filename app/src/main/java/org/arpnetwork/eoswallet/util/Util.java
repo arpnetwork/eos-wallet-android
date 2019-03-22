@@ -1,5 +1,8 @@
 package org.arpnetwork.eoswallet.util;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.text.TextUtils;
 
 import org.arpnetwork.eoswallet.blockchain.util.GsonEosTypeAdapterFactory;
@@ -37,6 +40,11 @@ public class Util {
         return new GsonBuilder()
                 .registerTypeAdapterFactory(new GsonEosTypeAdapterFactory())
                 .excludeFieldsWithoutExposeAnnotation()
-                .setPrettyPrinting().create().toJson( object );
+                .setPrettyPrinting().create().toJson(object);
+    }
+
+    public static void copyToClipboard(Context context, String text) {
+        ClipboardManager clip = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        clip.setPrimaryClip(ClipData.newPlainText(null, text));
     }
 }

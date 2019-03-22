@@ -40,7 +40,7 @@
             android:name=".ui.transfer.TransferActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.detail.DetailActivity"
+            android:name=".ui.assets.AssetsDetailActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".qr.QRCodeScannerActivity"
@@ -56,6 +56,12 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.wallet.load.CheckAccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.transaction.TransactionDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.resource.ResourceTransActivity"
             android:screenOrientation="portrait" />
     </application>
 

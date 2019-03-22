@@ -97,5 +97,15 @@
     <string name="illegal_private_key">私钥输入错误</string>
     <string name="check_failed">私钥验证错误\n请重新确认</string>
     <string name="check_success">备份成功</string>
+
+    <!--交易详情-->
+    <string name="transaction_details">交易详情</string>
+    <string name="payer">发款人</string>
+    <string name="payee">收款人</string>
+    <string name="transaction_no">交易号</string>
+    <string name="block_no">区块号</string>
+    <string name="transaction_time">交易时间</string>
+    <string name="query_details">查询详细详情</string>
+    <string name="copied">已复制</string>
 </resources>
 

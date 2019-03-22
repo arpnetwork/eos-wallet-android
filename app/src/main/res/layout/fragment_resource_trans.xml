@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="77dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="37dp"
+        android:background="@drawable/round_corner_bg_solid"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_qrcode_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="49dp"
+            android:gravity="center"
+            android:textColor="@color/title_text_color"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/iv_qrcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="18dp" />
+
+        <TextView
+            android:id="@+id/tv_qrcode_tail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:textColor="@color/title_text_color"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_qrcode_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="37dp"
+            android:layout_marginRight="37dp"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:textColor="@color/title_text_color"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="37dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="21dp"
+            android:layout_marginTop="37dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_share"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/round_corner_bg_primary"
+                android:text="@string/share_to_friend"
+                android:textColor="@color/colorPrimary" />
+
+            <Button
+                android:id="@+id/btn_copy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/round_corner_bg_solid_primary"
+                android:text="@string/copy"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>

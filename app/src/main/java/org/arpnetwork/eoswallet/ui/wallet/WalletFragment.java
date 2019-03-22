@@ -1,20 +1,18 @@
 package org.arpnetwork.eoswallet.ui.wallet;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.arpnetwork.eoswallet.R;
 import org.arpnetwork.eoswallet.base.BaseFragment;
 import org.arpnetwork.eoswallet.ui.ReceiptActivity;
-import org.arpnetwork.eoswallet.ui.detail.DetailActivity;
+import org.arpnetwork.eoswallet.ui.assets.AssetsDetailActivity;
+import org.arpnetwork.eoswallet.ui.resource.ResourceTransActivity;
 import org.arpnetwork.eoswallet.ui.transfer.TransferActivity;
 
 public class WalletFragment extends BaseFragment implements View.OnClickListener {
@@ -79,11 +77,12 @@ public class WalletFragment extends BaseFragment implements View.OnClickListener
                 startActivity(TransferActivity.class);
                 break;
             case R.id.layout_eos:
-                startActivity(DetailActivity.class);
+                startActivity(AssetsDetailActivity.class);
                 break;
             case R.id.layout_usde:
                 break;
             case R.id.btn_resource:
+                startActivity(ResourceTransActivity.class);
                 break;
             default:
                 break;

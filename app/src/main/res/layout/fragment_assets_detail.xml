@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layout_assets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_total_assets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:text="@string/total_assets_format"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_total_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="688.9934"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/tv_cny"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="2dp"
+                android:text="≈7335.68 CNY"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@android:color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_cur_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:text="@string/current_price"
+                android:textColor="#999999"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="17dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="12.8384"
+                android:textColor="#333333"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="6dp"
+                android:layout_height="11dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="17dp"
+                android:src="@drawable/arrow_right"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/trade_record"
+            android:textColor="#999999"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <org.arpnetwork.eoswallet.widget.SlidingTabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@android:color/white" />
+
+    <org.arpnetwork.eoswallet.widget.CustomViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/white" />
+
+    <LinearLayout
+        android:id="@+id/layout_receipt_transfer"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_below="@id/layout_assets"
+        android:background="#fdfbf6"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:id="@+id/layout_receipt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_receipt"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_receipt" />
+
+            <TextView
+                android:id="@+id/tv_receipt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="收款"
+                android:textColor="#5a5b5c"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="25dp"
+            android:background="#d8d8d8" />
+
+        <LinearLayout
+            android:id="@+id/layout_transfer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_transfer"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/icon_transfer" />
+
+            <TextView
+                android:id="@+id/tv_transfer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="转账"
+                android:textColor="#5a5b5c"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

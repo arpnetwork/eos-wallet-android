@@ -1,0 +1,254 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:paddingLeft="17dp"
+        android:paddingRight="17dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="19dp"
+            android:layout_marginTop="19dp"
+            android:text="+300.2200EOS"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp"
+            android:textStyle="italic" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#d9dadb" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:layout_marginTop="13dp"
+                android:text="@string/payer"
+                android:textColor="#666666"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btn_payer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/icon_copy"
+                android:drawablePadding="6dp"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:text="ISSSME"
+                android:textAllCaps="false"
+                android:textColor="#333333" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#d9dadb" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:layout_marginTop="13dp"
+                android:text="@string/payee"
+                android:textColor="#666666"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btn_payee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/icon_copy"
+                android:drawablePadding="6dp"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:text="5255545"
+                android:textAllCaps="false"
+                android:textColor="#333333" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#d9dadb" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:layout_marginTop="13dp"
+                android:text="@string/remarks"
+                android:textColor="#666666"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textColor="#333333"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#d9dadb" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:layout_marginTop="13dp"
+                android:text="@string/transaction_no"
+                android:textColor="#666666"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btn_transaction_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="45dp"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/icon_copy"
+                android:drawablePadding="6dp"
+                android:ellipsize="middle"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:singleLine="true"
+                android:text="00ed0ceba9537b963297b963297b96329270cbjuf"
+                android:textAllCaps="false"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#d9dadb" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:layout_marginTop="13dp"
+                android:text="@string/block_no"
+                android:textColor="#666666"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="30534979"
+                android:textColor="#333333"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#d9dadb" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:layout_marginTop="13dp"
+                android:text="@string/transaction_time"
+                android:textColor="#666666"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="2018-12-04 10:05:23"
+                android:textColor="#333333"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#d9dadb" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:id="@+id/iv_qrcode"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:layout_centerHorizontal="true" />
+
+            <Button
+                android:id="@+id/btn_query_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_qrcode"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/transparent"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:paddingBottom="3dp"
+                android:text="@string/query_details"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_alignLeft="@id/btn_query_details"
+                android:layout_alignRight="@id/btn_query_details"
+                android:layout_below="@id/btn_query_details"
+                android:background="@color/colorPrimary" />
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>
