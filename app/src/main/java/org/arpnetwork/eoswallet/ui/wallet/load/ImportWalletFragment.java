@@ -14,9 +14,14 @@ import android.widget.ImageButton;
 
 import org.arpnetwork.eoswallet.R;
 import org.arpnetwork.eoswallet.base.ScanNeededFragment;
+import org.arpnetwork.eoswallet.blockchain.cypto.ec.EosPrivateKey;
+import org.arpnetwork.eoswallet.misc.Constant;
 import org.arpnetwork.eoswallet.ui.wallet.CheckPolicyView;
 import org.arpnetwork.eoswallet.ui.wallet.PasswordView;
+import org.arpnetwork.eoswallet.util.PreferenceManager;
 import org.arpnetwork.eoswallet.util.UIHelper;
+
+import java.io.IOException;
 
 public class ImportWalletFragment extends ScanNeededFragment {
     EditText mPrivateKeyET;
@@ -65,14 +70,24 @@ public class ImportWalletFragment extends ScanNeededFragment {
         importBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (TextUtils.isEmpty(mPrivateKeyET.getText().toString())) {
+                String pvtKey = mPrivateKeyET.getText().toString();
+                String pwTip = mPasswordTipET.getText().toString();
+                if (TextUtils.isEmpty(pvtKey)) {
                     UIHelper.showToast(getContext(), R.string.enter_private_key);
-                } else if (TextUtils.isEmpty(mPasswordTipET.getText().toString())) {
+                } else if (TextUtils.isEmpty(pwTip)) {
                     UIHelper.showToast(getContext(), R.string.enter_password_tip);
                 } else if (mCheckPolicyView.isCheck() && mPasswordView.getPassword() != null) {
-                    // TODO:储存密码提示，导入私钥
-
-                    CheckAccountActivity.launch(getActivity(), mPrivateKeyET.getText().toString());
+                    EosPrivateKey pvt = null;
+                    try {
+                        pvt = new EosPrivateKey(pvtKey);
+                    } catch (IllegalArgumentException e) {
+                        UIHelper.showToast(getContext(), R.string.illegal_private_key);
+                        return;
+                    }
+                    if (pvt != null) {
+                        PreferenceManager.getInstance().putString(Constant.PASSWORD_TIP, pwTip);
+                        CheckAccountActivity.launch(getActivity(), mPrivateKeyET.getText().toString());
+                    }
                 }
             }
         });

@@ -49,40 +49,39 @@ public class EosPublicKey {
         }
     }
 
-    public EosPublicKey( byte[] data ){
-        this( data, EcTools.getCurveParam( CurveParam.SECP256_K1));
+    public EosPublicKey(byte[] data) {
+        this(data, EcTools.getCurveParam(CurveParam.SECP256_K1));
     }
 
-    public EosPublicKey( byte[] data, CurveParam curveParam ){
+    public EosPublicKey(byte[] data, CurveParam curveParam) {
         mData = Arrays.copyOf(data, 33);
         mCurveParam = curveParam;
 
-        mCheck= BitUtils.uint32ToLong( Ripemd160.from( mData, 0, mData.length).bytes(), 0 );
+        mCheck = BitUtils.uint32ToLong(Ripemd160.from(mData, 0, mData.length).bytes(), 0);
     }
 
     public EosPublicKey(String base58Str) {
         RefValue<Long> checksumRef = new RefValue<>();
 
-        String[] parts = EosEcUtil.safeSplitEosCryptoString( base58Str );
-        if ( base58Str.startsWith(LEGACY_PREFIX) ) {
-            if ( parts.length == 1 ){
-                mCurveParam = EcTools.getCurveParam( CurveParam.SECP256_K1);
-                mData = EosEcUtil.getBytesIfMatchedRipemd160( base58Str.substring( LEGACY_PREFIX.length()), null, checksumRef);
+        String[] parts = EosEcUtil.safeSplitEosCryptoString(base58Str);
+        if (base58Str.startsWith(LEGACY_PREFIX)) {
+            if (parts.length == 1) {
+                mCurveParam = EcTools.getCurveParam(CurveParam.SECP256_K1);
+                mData = EosEcUtil.getBytesIfMatchedRipemd160(base58Str.substring(LEGACY_PREFIX.length()), null, checksumRef);
+            } else {
+                throw new IllegalEosPubkeyFormatException(base58Str);
             }
-            else {
-                throw new IllegalEosPubkeyFormatException( base58Str );
-            }
-        }
-        else {
-            if ( parts.length < 3 ) {
-                throw new IllegalEosPubkeyFormatException( base58Str );
+        } else {
+            if (parts.length < 3) {
+                throw new IllegalEosPubkeyFormatException(base58Str);
             }
 
             // [0]: prefix, [1]: curve type, [2]: data
-            if ( false == PREFIX.equals( parts[0]) ) throw new IllegalEosPubkeyFormatException( base58Str );
+            if (false == PREFIX.equals(parts[0]))
+                throw new IllegalEosPubkeyFormatException(base58Str);
 
-            mCurveParam = EosEcUtil.getCurveParamFrom( parts[1]);
-            mData = EosEcUtil.getBytesIfMatchedRipemd160( parts[2], parts[1], checksumRef);
+            mCurveParam = EosEcUtil.getCurveParamFrom(parts[1]);
+            mData = EosEcUtil.getBytesIfMatchedRipemd160(parts[2], parts[1], checksumRef);
         }
 
         mCheck = checksumRef.data;
@@ -96,9 +95,9 @@ public class EosPublicKey {
     @Override
     public String toString() {
 
-        boolean isR1 = mCurveParam.isType( CurveParam.SECP256_R1 );
+        boolean isR1 = mCurveParam.isType(CurveParam.SECP256_R1);
 
-        return EosEcUtil.encodeEosCrypto( isR1 ? PREFIX : LEGACY_PREFIX, isR1 ? mCurveParam : null, mData );
+        return EosEcUtil.encodeEosCrypto(isR1 ? PREFIX : LEGACY_PREFIX, isR1 ? mCurveParam : null, mData);
 
 //        byte[] postfixBytes = isR1 ? EosEcUtil.PREFIX_R1.getBytes() : new byte[0] ;
 //        byte[] toDigest = new byte[mData.length + postfixBytes.length];
@@ -123,21 +122,21 @@ public class EosPublicKey {
     }
 
     @Override
-    public int hashCode(){
-        return (int)(mCheck & 0xFFFFFFFFL );
+    public int hashCode() {
+        return (int) (mCheck & 0xFFFFFFFFL);
     }
 
     @Override
     public boolean equals(Object other) {
-        if ( this == other ) return true;
+        if (this == other) return true;
 
-        if ( null == other || getClass() != other.getClass())
+        if (null == other || getClass() != other.getClass())
             return false;
 
-        return BitUtils.areEqual( this.mData, ((EosPublicKey)other).mData);
+        return BitUtils.areEqual(this.mData, ((EosPublicKey) other).mData);
     }
 
     public boolean isCurveParamK1() {
-        return ( mCurveParam == null || CurveParam.SECP256_K1 == mCurveParam.getCurveParamType() );
+        return (mCurveParam == null || CurveParam.SECP256_K1 == mCurveParam.getCurveParamType());
     }
 }

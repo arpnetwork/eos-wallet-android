@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -205,5 +206,9 @@ public abstract class BaseFragment extends Fragment {
         if (getContentView() != null) {
             getContentView().setVisibility(View.VISIBLE);
         }
+    }
+
+    protected void debugLog(String msg) {
+        Log.d(getClass().getSimpleName(), msg);
     }
 }

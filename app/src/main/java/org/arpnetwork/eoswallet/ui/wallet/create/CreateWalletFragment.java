@@ -2,6 +2,7 @@ package org.arpnetwork.eoswallet.ui.wallet.create;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,19 @@ import android.widget.EditText;
 
 import org.arpnetwork.eoswallet.R;
 import org.arpnetwork.eoswallet.base.BaseFragment;
+import org.arpnetwork.eoswallet.blockchain.cypto.ec.EosPrivateKey;
+import org.arpnetwork.eoswallet.blockchain.wallet.EosWalletManager;
+import org.arpnetwork.eoswallet.misc.Constant;
 import org.arpnetwork.eoswallet.ui.wallet.CheckPolicyView;
 import org.arpnetwork.eoswallet.ui.wallet.PasswordView;
+import org.arpnetwork.eoswallet.util.PreferenceManager;
 import org.arpnetwork.eoswallet.util.UIHelper;
 
+
+import java.io.IOException;
+
 public class CreateWalletFragment extends BaseFragment {
+
     EditText mAccountNameET;
     PasswordView mPasswordView;
     CheckPolicyView mCheckPolicyView;
@@ -41,17 +50,41 @@ public class CreateWalletFragment extends BaseFragment {
                 if (TextUtils.isEmpty(mAccountNameET.getText().toString())) {
                     UIHelper.showToast(getContext(), R.string.enter_account_name);
                 } else if (mCheckPolicyView.isCheck() && mPasswordView.getPassword() != null) {
-                    // TODO:创建钱包
-
-                    backupPrivateKey();
+                    createWallet();
                 }
             }
         });
     }
 
-    private void backupPrivateKey() {
-        // TODO:生成新私钥
-        BackupPrivateKeyActivity.launch(getActivity(), "123", 0);
+    private void createWallet() {
+        EosWalletManager walletManager = new EosWalletManager(getContext());
+        if (!walletManager.walletExists(Constant.WALLET_NAME)) {
+            String password = null;
+            try {
+                password = walletManager.create(Constant.WALLET_NAME);
+            } catch (IOException e) {
+                UIHelper.showToast(getContext(), getResources().getString(R.string.create_wallet_failed) + e.getMessage());
+            }
+            debugLog("create wallet, wallet name = " + Constant.WALLET_NAME + ", password = " + password);
+            PreferenceManager.getInstance().putString(Constant.WALLET_PASSWORD, password);
+        }
+        if (walletManager.isLocked(Constant.WALLET_NAME)) {
+            walletManager.unlock(Constant.WALLET_NAME, PreferenceManager.getInstance().getString(Constant.WALLET_PASSWORD));
+        }
+        // TODO：是否处理钱包内已有密钥情况
+        String pvtKey = createPrivateKey();
+        debugLog("create wallet, private key = " + pvtKey);
+        walletManager.importKey(Constant.WALLET_NAME, pvtKey);
+        backupPrivateKey(pvtKey);
+    }
+
+    private String createPrivateKey() {
+        EosPrivateKey pvtKey = new EosPrivateKey();
+        return pvtKey.toWif();
+    }
+
+    private void backupPrivateKey(String pvtKey) {
+        BackupPrivateKeyActivity.launch(getActivity(), pvtKey, 0);
     }
 
 }

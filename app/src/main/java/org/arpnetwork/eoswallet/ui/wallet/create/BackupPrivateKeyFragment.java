@@ -53,26 +53,6 @@ public class BackupPrivateKeyFragment extends BaseFragment {
         } else {
             setWrite();
         }
-//        initNoPhotoTip();
-    }
-
-    private void initNoPhotoTip() {
-        mNoPhotoView = LayoutInflater.from(getContext()).inflate(R.layout.view_no_photo, null);
-
-        setIndentationText((TextView) mNoPhotoView.findViewById(R.id.tv_detail_1), getString(R.string.no_photo_detail_1));
-
-        setIndentationText((TextView) mNoPhotoView.findViewById(R.id.tv_detail_2), getString(R.string.no_photo_detail_2));
-
-        ((ViewGroup) findViewById(R.id.fl_root)).addView(mNoPhotoView);
-        mNoPhotoView.setVisibility(View.GONE);
-
-        findViewById(R.id.btn_known).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mNoPhotoView.setVisibility(View.GONE);
-                setWrite();
-            }
-        });
     }
 
     private void setRead() {
@@ -84,13 +64,13 @@ public class BackupPrivateKeyFragment extends BaseFragment {
         mNextStepBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                initNoPhotoTip();
                 BackupPrivateKeyActivity.launch(getActivity(), mPrivateKeyString, 1);
             }
         });
     }
 
     private void setWrite() {
-
         mPrivateKeyET.setText("");
         mPrivateKeyET.setEnabled(true);
         mTitleView.setText(R.string.check_your_private_key);
@@ -99,12 +79,30 @@ public class BackupPrivateKeyFragment extends BaseFragment {
         mNextStepBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: 检查私钥是否正确
+                // TODO: 更换图片
                 if(mPrivateKeyET.getText().toString().equals(mPrivateKeyString)) {
                     UIHelper.showImageToast(getContext(), R.drawable.no_photo, R.string.check_success);
                 } else {
                     UIHelper.showImageToast(getContext(), R.drawable.no_photo, R.string.check_failed);
                 }
+            }
+        });
+    }
+
+    private void initNoPhotoTip() {
+        mNoPhotoView = LayoutInflater.from(getContext()).inflate(R.layout.view_no_photo, null);
+
+        setIndentationText((TextView) mNoPhotoView.findViewById(R.id.tv_detail_1), getString(R.string.no_photo_detail_1));
+        setIndentationText((TextView) mNoPhotoView.findViewById(R.id.tv_detail_2), getString(R.string.no_photo_detail_2));
+
+        ((ViewGroup) findViewById(R.id.fl_root)).addView(mNoPhotoView);
+        mNoPhotoView.setVisibility(View.GONE);
+
+        findViewById(R.id.btn_known).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mNoPhotoView.setVisibility(View.GONE);
+                BackupPrivateKeyActivity.launch(getActivity(), mPrivateKeyString, 1);
             }
         });
     }

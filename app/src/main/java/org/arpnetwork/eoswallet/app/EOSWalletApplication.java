@@ -24,11 +24,7 @@ public class EOSWalletApplication extends Application {
 
         PreferenceManager.init(getApplicationContext());
 
-        try {
-            initOkGo();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        initOkGo();
     }
 
     @Override
@@ -38,7 +34,7 @@ public class EOSWalletApplication extends Application {
         PreferenceManager.fini();
     }
 
-    public void initOkGo() throws IOException {
+    public void initOkGo() {
         HttpHeaders headers = new HttpHeaders();
 
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -52,9 +48,12 @@ public class EOSWalletApplication extends Application {
         builder.writeTimeout(10000, TimeUnit.MILLISECONDS);     //全局的写入超时时间
         builder.connectTimeout(10000, TimeUnit.MILLISECONDS);   //全局的连接超时时间
 
-
-        HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(getAssets().open("server.cer"));
-        builder.sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager);
+        try {
+            HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(getAssets().open("server.cer"));
+            builder.sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 //        //配置https的域名匹配规则，使用不当会导致https握手失败
         builder.hostnameVerifier(HttpsUtils.UnSafeHostnameVerifier);
 

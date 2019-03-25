@@ -10,7 +10,9 @@ import android.widget.TextView;
 
 import org.arpnetwork.eoswallet.R;
 import org.arpnetwork.eoswallet.base.BaseFragment;
+import org.arpnetwork.eoswallet.blockchain.cypto.ec.EosPrivateKey;
 import org.arpnetwork.eoswallet.misc.Constant;
+import org.arpnetwork.eoswallet.util.UIHelper;
 
 public class CheckAccountFragment extends BaseFragment {
     private EditText mPrivateKeyEditText;
@@ -46,7 +48,8 @@ public class CheckAccountFragment extends BaseFragment {
             public void onClick(View view) {
                 String publicKey = getPublicKey();
                 if (publicKey == null) {
-                    // TODO: 提示私钥错误
+                    // TODO: 提示私钥错误，修改图片
+                    UIHelper.showImageToast(getContext(), R.drawable.no_photo, R.string.key_error);
                 } else {
                     mPublicKeyTV.setText(publicKey);
                     mPublicKeyTV.setVisibility(View.VISIBLE);
@@ -70,10 +73,8 @@ public class CheckAccountFragment extends BaseFragment {
     }
 
     private String getPublicKey() {
-        mPrivateKeyEditText.getText().toString();
-
-        // TODO:根据私钥生成公钥
-        return "test public key";
+        EosPrivateKey pvtKey = new EosPrivateKey(mPrivateKeyEditText.getText().toString());
+        return pvtKey.getPublicKey().toString();
     }
 
     private String getAccount() {

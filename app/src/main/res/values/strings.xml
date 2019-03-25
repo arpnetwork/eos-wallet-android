@@ -68,6 +68,7 @@
     <string name="password_confirm_failed">两次输入密码不相同，请检查</string>
     <string name="enter_password">请输入密码</string>
     <string name="enter_account_name">请输入账户名称</string>
+    <string name="create_wallet_failed">创建钱包失败：</string>
 
     <!--导入钱包-->
     <string name="import_wallet">导入钱包</string>

@@ -9,4 +9,8 @@ public class Constant {
     public static final int QRCODE_REQUEST = 101;
 
     public static final String KEY_REQUEST_PERMISSIONS = "kRequestPermissions";
+
+    public static final String WALLET_NAME = "WALLET_NAME";
+    public static final String WALLET_PASSWORD = "WALLET_PASSWORD";
+    public static final String PASSWORD_TIP = "PASSWORD_TIP";
 }
