@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import org.arpnetwork.eoswallet.R;
 import org.arpnetwork.eoswallet.base.BaseFragment;
+import org.arpnetwork.eoswallet.ui.ReceiptActivity;
+import org.arpnetwork.eoswallet.ui.transfer.TransferActivity;
 import org.arpnetwork.eoswallet.util.UIHelper;
 import org.arpnetwork.eoswallet.widget.SlidingTabLayout;
 import com.github.ksoichiro.android.observablescrollview.CacheFragmentStatePagerAdapter;
@@ -73,14 +75,19 @@ public class AssetsDetailFragment extends BaseFragment implements View.OnClickLi
         slidingTabLayout.setSelectedIndicatorColors(getResources().getColor(R.color.tab_indicator_text_pressed));
         slidingTabLayout.setDividerColors(Color.TRANSPARENT);
         slidingTabLayout.setViewPager(viewPager);
+
+        findViewById(R.id.layout_receipt).setOnClickListener(this);
+        findViewById(R.id.layout_transfer).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.layout_receipt:
+                startActivity(ReceiptActivity.class);
                 break;
             case R.id.layout_transfer:
+                startActivity(TransferActivity.class);
                 break;
             default:
                 break;
@@ -98,7 +105,6 @@ public class AssetsDetailFragment extends BaseFragment implements View.OnClickLi
 
     @Override
     public void onDownMotionEvent() {
-
     }
 
     @Override

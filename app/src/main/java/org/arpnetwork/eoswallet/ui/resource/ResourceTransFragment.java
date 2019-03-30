@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import org.arpnetwork.eoswallet.R;
 import org.arpnetwork.eoswallet.base.BaseFragment;
 
-public class ResourceTransFragment extends BaseFragment{
+public class ResourceTransFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

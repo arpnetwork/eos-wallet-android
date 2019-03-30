@@ -6,7 +6,6 @@
     <string name="tab_wallet">钱包</string>
     <string name="tab_explore">探索</string>
     <string name="tab_mine">我的</string>
-    <string name="personal_center">个人中心</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
 
@@ -14,6 +13,16 @@
     <string name="total_assets">总资产折合</string>
     <string name="receipt">收款</string>
     <string name="transfer">转账</string>
+
+    <!--我的-->
+    <string name="personal_center">个人中心</string>
+    <string name="wallet_manage">钱包管理</string>
+    <string name="message_manage">消息管理</string>
+    <string name="security_center">安全中心</string>
+    <string name="help_center">帮助中心</string>
+    <string name="invite_friend">邀请好友</string>
+    <string name="about_us">关于我们</string>
+    <string name="system_settings">系统设置</string>
 
     <!--转账-->
     <string name="receipt_account">收款账号</string>

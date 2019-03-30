@@ -22,7 +22,7 @@
             android:id="@+id/textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="1dp"
             android:text="@string/tab_wallet"
             android:textColor="@color/tab_text_color"
             android:textSize="11sp" />

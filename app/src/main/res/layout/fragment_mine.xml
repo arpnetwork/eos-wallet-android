@@ -1,12 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tab_mine" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="6dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical">
 
+        <LinearLayout
+            android:id="@+id/layout_wallet_manage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="24dp"
+                android:src="@drawable/tab_wallet_pressed" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="@string/wallet_manage"
+                android:textColor="#333333"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="25dp"
+            android:background="#d8d8d8" />
+
+        <LinearLayout
+            android:id="@+id/layout_message_manage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="24dp"
+                android:src="@drawable/icon_message" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="@string/message_manage"
+                android:textColor="#333333"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:paddingLeft="17dp"
+        android:paddingRight="17dp">
+
+        <org.arpnetwork.eoswallet.widget.MyItem
+            android:id="@+id/item_security"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:item_icon="@drawable/icon_security_center"
+            app:item_text="@string/security_center" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#d9dadb" />
+
+        <org.arpnetwork.eoswallet.widget.MyItem
+            android:id="@+id/item_help"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:item_icon="@drawable/icon_help_center"
+            app:item_text="@string/help_center" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#d9dadb" />
+
+        <org.arpnetwork.eoswallet.widget.MyItem
+            android:id="@+id/item_invite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:item_icon="@drawable/icon_invite"
+            app:item_text="@string/invite_friend" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#d9dadb" />
+
+        <org.arpnetwork.eoswallet.widget.MyItem
+            android:id="@+id/item_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:item_icon="@drawable/icon_about"
+            app:item_text="@string/about_us" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#d9dadb" />
+
+        <org.arpnetwork.eoswallet.widget.MyItem
+            android:id="@+id/item_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:item_icon="@drawable/icon_settings"
+            app:item_text="@string/system_settings" />
+    </LinearLayout>
 </LinearLayout>
