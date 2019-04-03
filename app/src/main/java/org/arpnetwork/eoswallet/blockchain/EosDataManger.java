@@ -1,9 +1,6 @@
 package org.arpnetwork.eoswallet.blockchain;
 
-import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
 
 import org.arpnetwork.eoswallet.base.BaseUrl;
 import org.arpnetwork.eoswallet.base.Constants;
@@ -11,14 +8,11 @@ import org.arpnetwork.eoswallet.blockchain.api.EosChainInfo;
 import org.arpnetwork.eoswallet.blockchain.bean.GetRequiredKeys;
 import org.arpnetwork.eoswallet.blockchain.bean.JsonToBeanResultBean;
 import org.arpnetwork.eoswallet.blockchain.bean.JsonToBinRequest;
-import org.arpnetwork.eoswallet.blockchain.bean.PushSuccessBean;
-import org.arpnetwork.eoswallet.blockchain.bean.RequreKeyResult;
 import org.arpnetwork.eoswallet.blockchain.chain.Action;
 import org.arpnetwork.eoswallet.blockchain.chain.PackedTransaction;
 import org.arpnetwork.eoswallet.blockchain.chain.SignedTransaction;
-import org.arpnetwork.eoswallet.blockchain.cypto.ec.EosPrivateKey;
-import org.arpnetwork.eoswallet.blockchain.types.TypeChainId;
 import org.arpnetwork.eoswallet.blockchain.util.GsonEosTypeAdapterFactory;
+import org.arpnetwork.eoswallet.data.AccountRes;
 import org.arpnetwork.eoswallet.data.ResponseBean;
 import org.arpnetwork.eoswallet.net.HttpUtils;
 import org.arpnetwork.eoswallet.net.callbck.JsonCallback;
@@ -30,7 +24,7 @@ import com.lzy.okgo.model.Response;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by pocketEos on 2018/5/2.
@@ -39,7 +33,7 @@ import java.util.List;
 
 public class EosDataManger {
     static String EOSCONTRACT = Constants.EOSCONTRACT;
-    static String OCTCONTRACT =  Constants.OCTCONTRACT;//erctoken
+    static String OCTCONTRACT = Constants.OCTCONTRACT;//erctoken
     static String ACTIONTRANSFER = Constants.ACTIONTRANSFER;
     static String PERMISSONION = Constants.PERMISSONION;
 
@@ -114,7 +108,7 @@ public class EosDataManger {
     }
 
     private SignedTransaction createTransaction(String contract, String actionName, String dataAsHex,
-                                                String[] permissions, EosChainInfo chainInfo) {
+            String[] permissions, EosChainInfo chainInfo) {
 
         Action action = new Action(contract, actionName);
         action.setAuthorization(permissions);
@@ -167,5 +161,35 @@ public class EosDataManger {
     public EosDataManger setCoinRate(BigDecimal coinRate) {
         this.coinRate = coinRate;
         return this;
+    }
+
+    public void accountAlloc(String publicKey, Object tag) {
+        String url = String.format(Locale.US, BaseUrl.HTTP_ACCOUNT_ALLOC, publicKey);
+        HttpUtils.getRequets(url, tag, null, new JsonCallback<AccountRes>() {
+            @Override
+            public void onSuccess(Response<AccountRes> response) {
+                super.onSuccess(response);
+            }
+
+            @Override
+            public void onError(Response<AccountRes> response) {
+                super.onError(response);
+            }
+        });
+    }
+
+    public void accountActive(String account, Object tag) {
+        String url = String.format(Locale.US, BaseUrl.HTTP_ACCOUNT_ACTIVE, account);
+        HttpUtils.getRequets(url, tag, null, new JsonCallback<String>() {
+            @Override
+            public void onSuccess(Response<String> response) {
+                super.onSuccess(response);
+            }
+
+            @Override
+            public void onError(Response<String> response) {
+                super.onError(response);
+            }
+        });
     }
 }

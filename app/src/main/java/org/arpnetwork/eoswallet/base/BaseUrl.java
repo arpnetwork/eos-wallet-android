@@ -19,6 +19,10 @@ public class BaseUrl {
     public final static String HTTP_ANSWER_ADDRESS = "http://api.pocketeos.top/eosaskanswer30/";
     public final static String HTTP_CANDY_ADDRESS = "http://api.pocketeos.top/api_oc_pe_candy_system/";*/
 
+    public final static String HOST = "http://122.152.214.84:8080";
+    public final static String HTTP_ACCOUNT_ALLOC = HOST + "/eos/contract/alloc/%s";
+    public final static String HTTP_ACCOUNT_ACTIVE = HOST + "/eos/contract/active/%s";
+
     // 注册EOS账号
     public final static String HTTP_eos_register = HTTP_CHAIN_ADDRESS + "create_account";
     //备份EOS账号至服务器

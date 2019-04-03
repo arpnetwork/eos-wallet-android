@@ -57,4 +57,12 @@ public class HttpUtils {
                 .upJson(parms)
                 .execute(callback);
     }
+
+    public static void cancel(Object tag) {
+        OkGo.getInstance().cancelTag(tag);
+    }
+
+    public static void cancelAll() {
+        OkGo.getInstance().cancelAll();
+    }
 }
