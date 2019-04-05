@@ -21,8 +21,6 @@ import org.arpnetwork.eoswallet.ui.wallet.PasswordView;
 import org.arpnetwork.eoswallet.util.PreferenceManager;
 import org.arpnetwork.eoswallet.util.UIHelper;
 
-import java.io.IOException;
-
 public class ImportWalletFragment extends ScanNeededFragment {
     EditText mPrivateKeyET;
     EditText mPasswordTipET;

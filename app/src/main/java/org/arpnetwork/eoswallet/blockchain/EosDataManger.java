@@ -3,164 +3,77 @@ package org.arpnetwork.eoswallet.blockchain;
 import android.content.Context;
 
 import org.arpnetwork.eoswallet.base.BaseUrl;
-import org.arpnetwork.eoswallet.base.Constants;
 import org.arpnetwork.eoswallet.blockchain.api.EosChainInfo;
+import org.arpnetwork.eoswallet.blockchain.api.GetBalanceRequest;
 import org.arpnetwork.eoswallet.blockchain.bean.GetRequiredKeys;
 import org.arpnetwork.eoswallet.blockchain.bean.JsonToBeanResultBean;
 import org.arpnetwork.eoswallet.blockchain.bean.JsonToBinRequest;
+import org.arpnetwork.eoswallet.blockchain.bean.RequreKeyResult;
 import org.arpnetwork.eoswallet.blockchain.chain.Action;
 import org.arpnetwork.eoswallet.blockchain.chain.PackedTransaction;
 import org.arpnetwork.eoswallet.blockchain.chain.SignedTransaction;
+import org.arpnetwork.eoswallet.blockchain.types.EosTransfer;
+import org.arpnetwork.eoswallet.blockchain.types.TypeChainId;
+import org.arpnetwork.eoswallet.blockchain.types.TypeSymbol;
 import org.arpnetwork.eoswallet.blockchain.util.GsonEosTypeAdapterFactory;
+import org.arpnetwork.eoswallet.blockchain.wallet.EosWalletManager;
 import org.arpnetwork.eoswallet.data.AccountRes;
-import org.arpnetwork.eoswallet.data.ResponseBean;
+import org.arpnetwork.eoswallet.misc.Constant;
 import org.arpnetwork.eoswallet.net.HttpUtils;
 import org.arpnetwork.eoswallet.net.callbck.JsonCallback;
-import org.arpnetwork.eoswallet.util.JsonUtil;
+import org.arpnetwork.eoswallet.util.Util;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.lzy.okgo.model.Response;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 
+import static org.arpnetwork.eoswallet.misc.Constant.EOSIO_TOKEN_CONTRACT;
+import static org.arpnetwork.eoswallet.misc.Constant.TX_EXPIRATION_IN_MILSEC;
+
 /**
- * Created by pocketEos on 2018/5/2.
- * eosX适配
+ * Created by evan on 2018/12/19.
+ * eos chain http api.
  */
 
 public class EosDataManger {
-    static String EOSCONTRACT = Constants.EOSCONTRACT;
-    static String OCTCONTRACT = Constants.OCTCONTRACT;//erctoken
-    static String ACTIONTRANSFER = Constants.ACTIONTRANSFER;
-    static String PERMISSONION = Constants.PERMISSONION;
-
-    Context mContext;
-    EosChainInfo mChainInfoBean = new EosChainInfo();
-    JsonToBeanResultBean mJsonToBeanResultBean = new JsonToBeanResultBean();
-    String[] permissions;
-    SignedTransaction txnBeforeSign;
-    Gson mGson = new GsonBuilder()
+    private EosWalletManager mWalletMgr;
+    private Context mContext;
+    private Gson mGson = new GsonBuilder()
             .registerTypeAdapterFactory(new GsonEosTypeAdapterFactory())
             .excludeFieldsWithoutExposeAnnotation().create();
+    private EosChainInfo currentBlockInfo;
 
-    String contract, action, message, userpassword;
+    private static EosDataManger sInstance = null;
 
-    BigDecimal coinRate;//资产汇率
-
-    public EosDataManger(Context context, String password) {
-        mContext = context;
-        this.userpassword = password;
+    public static void init(Context context) {
+        sInstance = new EosDataManger(context);
     }
 
-    public void pushAction(String message, String permissionAccount) {
-        this.message = message;
-        if (message.contains("EOS")) {
-            this.contract = EOSCONTRACT;
-        } else {
-            this.contract = OCTCONTRACT;
+    public static void fini() {
+        if (sInstance != null) {
+            sInstance = null;
         }
-        this.action = ACTIONTRANSFER;
-        permissions = new String[]{permissionAccount + "@" + PERMISSONION};
-        getChainInfo();
     }
 
-    public void getChainInfo() {
-        HttpUtils.getRequets(BaseUrl.HTTP_get_chain_info, this, new HashMap<String, String>(), new JsonCallback<ResponseBean>() {
-            @Override
-            public void onSuccess(Response<ResponseBean> response) {
-                if (response.body().code == 0) {
-                    mChainInfoBean = (EosChainInfo) JsonUtil.parseStringToBean(mGson.toJson(response.body().data), EosChainInfo.class);
-                    getabi_json_to_bin();
-                } else {
-//                    if (ShowDialog.dialog != null) {
-//                        ShowDialog.dissmiss();
-//                    }
-//                    ToastUtils.showLongToast(response.body().message);
-                }
-            }
-        });
+    public static EosDataManger getInstance() {
+        return sInstance;
     }
 
-    public void getabi_json_to_bin() {
+    public EosDataManger(Context context) {
+        mContext = context.getApplicationContext();
+        mWalletMgr = EosWalletManager.getInstance();
 
-        JsonToBinRequest jsonToBinRequest = new JsonToBinRequest(contract, action, message.replaceAll("\\r|\\n", ""));
-        HttpUtils.postRequest(BaseUrl.HTTP_get_abi_json_to_bin, this, mGson.toJson(jsonToBinRequest), new JsonCallback<ResponseBean>() {
-            @Override
-            public void onSuccess(Response<ResponseBean> response) {
-                if (response.body().code == 0) {
-                    mJsonToBeanResultBean = (JsonToBeanResultBean) JsonUtil.parseStringToBean(mGson.toJson(response.body().data), JsonToBeanResultBean.class);
-                    txnBeforeSign = createTransaction(contract, action, mJsonToBeanResultBean.getBinargs(), permissions, mChainInfoBean);
-                    //扫描钱包列出所有可用账号的公钥
-//                    List<String> pubKey =  PublicAndPrivateKeyUtils.getActivePublicKey();
-
-//                    getRequreKey(new GetRequiredKeys(txnBeforeSign, pubKey));
-                } else {
-//                    if (ShowDialog.dialog != null) {
-//                        ShowDialog.dissmiss();
-//                    }
-//                    ToastUtils.showLongToast(response.body().message);
-                }
-            }
-        });
+        // set core symbol
+        TypeSymbol.setCoreSymbol(Constant.DEFAULT_SYMBOL_PRECISION, Constant.EOS_SYMBOL_STRING);
     }
 
-    private SignedTransaction createTransaction(String contract, String actionName, String dataAsHex,
-            String[] permissions, EosChainInfo chainInfo) {
-
-        Action action = new Action(contract, actionName);
-        action.setAuthorization(permissions);
-        action.setData(dataAsHex);
-
-
-        SignedTransaction txn = new SignedTransaction();
-        txn.addAction(action);
-        txn.putSignatures(new ArrayList<String>());
-
-
-        if (null != chainInfo) {
-            txn.setReferenceBlock(chainInfo.getHeadBlockId());
-            txn.setExpiration(chainInfo.getTimeAfterHeadBlockTime(30000));
-        }
-        return txn;
-    }
-
-    public void getRequreKey(GetRequiredKeys getRequiredKeys) {
-
-        HttpUtils.postRequest(BaseUrl.HTTP_get_required_keys, this, mGson.toJson(getRequiredKeys), new JsonCallback<ResponseBean>() {
-            @Override
-            public void onSuccess(Response<ResponseBean> response) {
-//                if (response.body().code == 0) {
-//                    RequreKeyResult requreKeyResult = (RequreKeyResult) JsonUtil.parseStringToBean(mGson.toJson(response.body().data), RequreKeyResult.class);
-//                    EosPrivateKey eosPrivateKey = new EosPrivateKey(PublicAndPrivateKeyUtils.getPrivateKey(requreKeyResult.getRequired_keys().get(0), userpassword));
-//                    txnBeforeSign.sign(eosPrivateKey, new TypeChainId(mChainInfoBean.getChain_id()));
-//                    pushTransactionRetJson(new PackedTransaction(txnBeforeSign));
-//                } else {
-////                    if (ShowDialog.dialog != null) {
-////                        ShowDialog.dissmiss();
-////                    }
-////                    ToastUtils.showLongToast(response.body().message);
-//                }
-            }
-        });
-
-    }
-
-    public void pushTransactionRetJson(PackedTransaction body) {
-       /* HttpUtils.postRequest(BaseUrl.HTTP_push_transaction, this, mGson.toJson(body), new JsonCallback<ResponseBean>() {
-            @Override
-            public void onSuccess(final Response<ResponseBean> response) {
-
-
-            }
-        });*/
-    }
-
-    public EosDataManger setCoinRate(BigDecimal coinRate) {
-        this.coinRate = coinRate;
-        return this;
+    public void setInfo(EosChainInfo info) {
+        currentBlockInfo = info;
     }
 
     public void accountAlloc(String publicKey, Object tag) {
@@ -191,5 +104,96 @@ public class EosDataManger {
                 super.onError(response);
             }
         });
+    }
+
+    public JsonObject transfer(String userPasswd, String from, String to, long amount, String memo) {
+        EosTransfer transfer = new EosTransfer(from, to, amount, memo);
+        // TODO: wallet manager unlock the wallet with the userPasswd.
+        return pushActionRetJson(EOSIO_TOKEN_CONTRACT, transfer.getActionName(), Util.prettyPrintJson(transfer), getActivePermission(from)); //transfer.getAsHex()
+    }
+
+    public JsonObject pushActionRetJson(String contract, String action, String data, String[] permissions) {
+        JsonToBeanResultBean jsonToBinResp = getAbiJsonToBinSync(contract, action, data);
+        EosChainInfo chainInfo = getChainInfo();
+        SignedTransaction txnBeforeSign = createTransaction(contract, action, jsonToBinResp.getBinargs(), permissions, chainInfo);
+        PackedTransaction packedTransaction = signAndPackTransaction(txnBeforeSign);
+        return pushTransactionRetJson(packedTransaction);
+    }
+
+    // sync call.
+    public EosChainInfo getChainInfo() {
+        try {
+            EosChainInfo resultBean = HttpUtils.getRequetsSync(BaseUrl.HTTP_get_chain_info, this, new HashMap<String, String>(), EosChainInfo.class);
+            return resultBean;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public JsonToBeanResultBean getAbiJsonToBinSync(final String contract, final String action, String jsonStr) {
+        try {
+            JsonToBinRequest jsonToBinRequest = new JsonToBinRequest(contract, action, jsonStr.replaceAll("\\r|\\n", ""));
+            JsonToBeanResultBean result = HttpUtils.postRequestSync(BaseUrl.HTTP_get_abi_json_to_bin, this, mGson.toJson(jsonToBinRequest), JsonToBeanResultBean.class);
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public RequreKeyResult getRequiredKeys(SignedTransaction txnBeforeSign) {
+        try {
+            GetRequiredKeys requiredKeys = new GetRequiredKeys(txnBeforeSign, mWalletMgr.listPubKeys());
+            RequreKeyResult result = HttpUtils.postRequestSync(BaseUrl.HTTP_get_required_keys, this, mGson.toJson(requiredKeys), RequreKeyResult.class);
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public JsonObject pushTransactionRetJson(PackedTransaction packedTransaction) {
+        try {
+            JsonObject result = HttpUtils.postRequestSync(BaseUrl.HTTP_push_transaction, this, mGson.toJson(packedTransaction), JsonObject.class);
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void getCurrencyBalance(String contract, String account, String symbol, JsonCallback<JsonArray> callback) {
+        GetBalanceRequest requiredKeys = new GetBalanceRequest(contract, account, symbol);
+        HttpUtils.postRequest(BaseUrl.HTTP_get_currency_balance, this, mGson.toJson(requiredKeys), callback);
+    }
+
+    private String[] getActivePermission(String accountName) {
+        return new String[]{accountName + "@active"};
+    }
+
+    private SignedTransaction createTransaction(String contract, String actionName, String dataAsHex,
+            String[] permissions, EosChainInfo chainInfo) {
+        currentBlockInfo = chainInfo;
+        Action action = new Action(contract, actionName);
+        action.setAuthorization(permissions);
+        action.setData(dataAsHex);
+
+        SignedTransaction txn = new SignedTransaction();
+        txn.addAction(action);
+        txn.putSignatures(new ArrayList<String>());
+
+        if (null != chainInfo) {
+            txn.setReferenceBlock(chainInfo.getHeadBlockId());
+            txn.setExpiration(chainInfo.getTimeAfterHeadBlockTime(TX_EXPIRATION_IN_MILSEC));
+        }
+
+        return txn;
+    }
+
+    private PackedTransaction signAndPackTransaction(SignedTransaction txnBeforeSign) {
+        RequreKeyResult requiredKey = getRequiredKeys(txnBeforeSign);
+        SignedTransaction stxn = mWalletMgr.signTransaction(txnBeforeSign, requiredKey.getKeys(), new TypeChainId(currentBlockInfo.getChain_id()));
+        return new PackedTransaction(stxn);
     }
 }

@@ -79,6 +79,7 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
     public void onError(com.lzy.okgo.model.Response<T> response) {
         super.onError(response);
 //        ShowDialog.dissmiss();
+        Log.e(TAG,"onError");
         int code = response.code();
         if (code == 404) {
 //            ToastUtils.showLongToast(R.string.url_error);

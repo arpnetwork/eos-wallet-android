@@ -49,9 +49,25 @@ public class EosWalletManager {
 
     private HashMap<String, EosWallet> mWallets;
 
+    private static EosWalletManager sInstance = null;
+
+    public static void init(Context context) {
+        sInstance = new EosWalletManager(context);
+    }
+
+    public static void fini() {
+        if (sInstance != null) {
+            sInstance = null;
+        }
+    }
+
+    public static EosWalletManager getInstance() {
+        return sInstance;
+    }
+
     public EosWalletManager(Context context) {
         mWallets = new HashMap<>();
-        mContext = context;
+        mContext = context.getApplicationContext();
     }
 
     private File getDir() {

@@ -1,5 +1,9 @@
 package org.arpnetwork.eoswallet.blockchain.bean;
 
+import org.arpnetwork.eoswallet.blockchain.cypto.ec.EosPublicKey;
+import com.google.gson.annotations.Expose;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,13 +12,19 @@ import java.util.List;
 
 public class RequreKeyResult {
 
-    private List<String> required_keys;
+    @Expose
+    private List<String> required_keys ;
 
-    public List<String> getRequired_keys() {
-        return required_keys;
-    }
+    public List<EosPublicKey> getKeys() {
+        if ( null == required_keys ){
+            return new ArrayList<>();
+        }
 
-    public void setRequired_keys(List<String> required_keys) {
-        this.required_keys = required_keys;
+        ArrayList<EosPublicKey> retKeys = new ArrayList<>(required_keys.size());
+        for ( String pubKey: required_keys ){
+            retKeys.add( new EosPublicKey( pubKey));
+        }
+
+        return retKeys;
     }
 }

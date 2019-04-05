@@ -1,7 +1,10 @@
 package org.arpnetwork.eoswallet.net;
 
+import org.arpnetwork.eoswallet.net.callbck.JsonConvert;
 import com.lzy.okgo.OkGo;
 import org.arpnetwork.eoswallet.net.callbck.JsonCallback;
+import com.lzy.okgo.adapter.Call;
+import com.lzy.okgo.model.Response;
 
 import java.util.Map;
 
@@ -24,6 +27,16 @@ public class HttpUtils {
                 .tag(tag)
                 .params(map)
                 .execute(callback);
+    }
+
+    public static <T> T getRequetsSync(String url, Object tag, Map<String, String> map, Class<T> cls) throws Exception {
+        Call<T> call = OkGo.<T>get(url)
+                .tag(tag)
+                .params(map)
+                .converter(new JsonConvert<T>(cls))//
+                .adapt();
+        Response<T> response = call.execute();
+        return response.body();
     }
 
     /**
@@ -56,6 +69,28 @@ public class HttpUtils {
                 .tag(tag)
                 .upJson(parms)
                 .execute(callback);
+    }
+
+    public static <T> T postRequestSync(String url, Object tag, Map<String, String> map, Class<T> cls) throws Exception {
+        Call<T> call = OkGo.<T>post(url)
+                .tag(tag)
+                .params(map)
+                .converter(new JsonConvert<T>(cls))//
+                .adapt();
+
+        Response<T> response = call.execute();
+        return response.body();
+    }
+
+    public static <T> T postRequestSync(String url, Object tag, String parms, Class<T> cls) throws Exception {
+        Call<T> call = OkGo.<T>post(url)
+                .tag(tag)
+                .upJson(parms)
+                .converter(new JsonConvert<T>(cls))//
+                .adapt();
+
+        Response<T> response = call.execute();
+        return response.body();
     }
 
     public static void cancel(Object tag) {

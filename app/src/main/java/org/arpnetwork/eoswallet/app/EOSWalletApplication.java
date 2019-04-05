@@ -2,13 +2,16 @@ package org.arpnetwork.eoswallet.app;
 
 import android.app.Application;
 
-import org.arpnetwork.eoswallet.util.PreferenceManager;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.https.HttpsUtils;
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
 import com.lzy.okgo.model.HttpHeaders;
+
+import org.arpnetwork.eoswallet.blockchain.EosDataManger;
+import org.arpnetwork.eoswallet.blockchain.wallet.EosWalletManager;
+import org.arpnetwork.eoswallet.util.PreferenceManager;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -22,6 +25,8 @@ public class EOSWalletApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        EosWalletManager.init(getApplicationContext());
+        EosDataManger.init(getApplicationContext());
         PreferenceManager.init(getApplicationContext());
 
         initOkGo();
@@ -31,7 +36,12 @@ public class EOSWalletApplication extends Application {
     public void onTerminate() {
         super.onTerminate();
 
+        EosDataManger.fini();
+        EosWalletManager.fini();
         PreferenceManager.fini();
+
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(0);
     }
 
     public void initOkGo() {

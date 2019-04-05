@@ -36,6 +36,26 @@ public class Util {
         return -1;
     }
 
+    public static long parseLongSafely(String content, int defaultValue) {
+        if ( null == content) return defaultValue;
+
+        try {
+            return Long.parseLong(content);
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
+    }
+
+    public static int parseIntSafely(String content, int defaultValue) {
+        if ( null == content) return defaultValue;
+
+        try {
+            return Integer.parseInt(content);
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
+    }
+
     public static String prettyPrintJson(Object object) {
         return new GsonBuilder()
                 .registerTypeAdapterFactory(new GsonEosTypeAdapterFactory())

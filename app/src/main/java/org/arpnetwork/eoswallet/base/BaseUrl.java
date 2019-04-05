@@ -8,7 +8,7 @@ public class BaseUrl {
     // 测试环境服务器地址
     public final static String HTTP_ADDRESS = "http://59.110.162.106:9999/api_oc_personal/v1.0.0/";
     public final static String HTTP_CHAIN_VOTE_ADDRESS = "http://59.110.162.106:8080/voteoraclechain/";
-    public final static String HTTP_CHAIN_ADDRESS = "http://39.108.231.157:30065/v1/chain";
+    public final static String HTTP_CHAIN_ADDRESS = "http://39.108.231.157:30065/v1/chain/";
     public final static String HTTP_ANSWER_ADDRESS = "http://59.110.162.106:8080/";
     public final static String HTTP_CANDY_ADDRESS = "http://59.110.162.106:9999/api_oc_pe_candy_system/";
 /*
@@ -27,6 +27,7 @@ public class BaseUrl {
     public final static String HTTP_eos_register = HTTP_CHAIN_ADDRESS + "create_account";
     //备份EOS账号至服务器
     public final static String HTTP_add_new_eos = HTTP_ADDRESS + "user/add_new_eos";
+
     // 获取EOS账号信息
     public final static String HTTP_eos_get_account = HTTP_CHAIN_ADDRESS + "get_account_asset";
     // 获取链上信息
@@ -35,6 +36,8 @@ public class BaseUrl {
     public final static String HTTP_eos_get_coin_rate = HTTP_CHAIN_ADDRESS + "get_rate";
     // 获取走势图
     public final static String HTTP_get_sparklines = HTTP_CHAIN_ADDRESS + "get_sparklines";
+    // 获取余额
+    public final static String HTTP_get_currency_balance = HTTP_CHAIN_ADDRESS + "get_currency_balance";
 
     // 获取区块链状态
     public final static String HTTP_get_chain_info = HTTP_CHAIN_ADDRESS + "get_info";
@@ -44,6 +47,7 @@ public class BaseUrl {
     public final static String HTTP_get_required_keys = HTTP_CHAIN_ADDRESS + "get_required_keys";
     // 发起交易
     public final static String HTTP_push_transaction = HTTP_CHAIN_ADDRESS + "push_transaction";
+
     // 获取交易历史
     public final static String HTTP_get_transaction_history = "http://history.pocketeos.top/VX/GetActions";
     // 获取区块链账号信息

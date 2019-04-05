@@ -2,7 +2,6 @@ package org.arpnetwork.eoswallet.ui.wallet.create;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +56,7 @@ public class CreateWalletFragment extends BaseFragment {
     }
 
     private void createWallet() {
-        EosWalletManager walletManager = new EosWalletManager(getContext());
+        EosWalletManager walletManager = EosWalletManager.getInstance();
         if (!walletManager.walletExists(Constant.WALLET_NAME)) {
             String password = null;
             try {

@@ -2,6 +2,7 @@ package org.arpnetwork.eoswallet.blockchain.util;
 
 import org.arpnetwork.eoswallet.blockchain.types.TypeAccountName;
 import org.arpnetwork.eoswallet.blockchain.types.TypeActionName;
+import org.arpnetwork.eoswallet.blockchain.types.TypeAsset;
 import org.arpnetwork.eoswallet.blockchain.types.TypeName;
 import org.arpnetwork.eoswallet.blockchain.types.TypePermissionName;
 import com.google.gson.Gson;
@@ -27,12 +28,12 @@ public class GsonEosTypeAdapterFactory implements TypeAdapterFactory {
     private Map<Class<?>, TypeAdapter<?>> adapters = new LinkedHashMap<>();
 
     {
-        adapters.put(TypeName.class, new TypeNameAdapter<>( TypeName.class));
-        adapters.put(TypeAccountName.class, new TypeNameAdapter<>( TypeAccountName.class));
-        adapters.put(TypeActionName.class, new TypeNameAdapter<>( TypeActionName.class));
-        adapters.put(TypePermissionName.class, new TypeNameAdapter<>( TypePermissionName.class));
+        adapters.put(TypeName.class, new TypeNameAdapter<>(TypeName.class));
+        adapters.put(TypeAccountName.class, new TypeNameAdapter<>(TypeAccountName.class));
+        adapters.put(TypeActionName.class, new TypeNameAdapter<>(TypeActionName.class));
+        adapters.put(TypePermissionName.class, new TypeNameAdapter<>(TypePermissionName.class));
 
-//        adapters.put( TypeAsset.class, new TypeNameAdapter<>(TypeAsset.class));
+        adapters.put(TypeAsset.class, new TypeNameAdapter<>(TypeAsset.class));
     }
 
     @Override
@@ -43,7 +44,7 @@ public class GsonEosTypeAdapterFactory implements TypeAdapterFactory {
             if (type.isAssignableFrom(typeToken.getRawType())) {
                 if (currentType.isAssignableFrom(type)) {
                     currentType = type;
-                    typeAdapter = (TypeAdapter<T>)adapters.get(type);
+                    typeAdapter = (TypeAdapter<T>) adapters.get(type);
                 }
             }
         }
@@ -54,7 +55,7 @@ public class GsonEosTypeAdapterFactory implements TypeAdapterFactory {
 
         private Class<C> clazz;
 
-        public TypeNameAdapter(Class<C> clazz){
+        public TypeNameAdapter(Class<C> clazz) {
             this.clazz = clazz;
         }
 
@@ -66,8 +67,8 @@ public class GsonEosTypeAdapterFactory implements TypeAdapterFactory {
             }
 
             try {
-                Constructor<C> constructor = clazz.getConstructor( String.class );
-                return constructor.newInstance( in.nextString());
+                Constructor<C> constructor = clazz.getConstructor(String.class);
+                return constructor.newInstance(in.nextString());
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
