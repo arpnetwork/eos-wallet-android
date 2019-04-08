@@ -22,6 +22,8 @@ public class BaseUrl {
     public final static String HOST = "http://122.152.214.84:8080";
     public final static String HTTP_ACCOUNT_ALLOC = HOST + "/eos/contract/alloc/%s";
     public final static String HTTP_ACCOUNT_ACTIVE = HOST + "/eos/contract/active/%s";
+    public final static String HTTP_GET_EOS_PRICE = HOST + "/eos/getprice";
+    public final static String HTTP_GET_BHKD_PRICE = HOST + "/rate/hkdcny";
 
     // 注册EOS账号
     public final static String HTTP_eos_register = HTTP_CHAIN_ADDRESS + "create_account";

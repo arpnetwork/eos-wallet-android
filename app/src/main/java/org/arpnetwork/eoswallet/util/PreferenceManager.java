@@ -30,6 +30,10 @@ public class PreferenceManager {
         mSharedPreferences.edit().putInt(key, value).commit();
     }
 
+    public void putFloat(String key, float value) {
+        mSharedPreferences.edit().putFloat(key, value).commit();
+    }
+
     public void putString(String key, String value) {
         mSharedPreferences.edit().putString(key, value).commit();
     }
@@ -44,6 +48,10 @@ public class PreferenceManager {
 
     public int getInt(String key) {
         return mSharedPreferences.getInt(key, -1);
+    }
+
+    public float getFloat(String key) {
+        return mSharedPreferences.getFloat(key, 0);
     }
 
     public String getString(String key) {

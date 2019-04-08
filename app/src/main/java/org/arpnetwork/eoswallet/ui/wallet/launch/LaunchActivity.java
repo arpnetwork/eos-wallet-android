@@ -15,7 +15,7 @@ public class LaunchActivity extends BaseActivity {
         hideNavigationButton();
         setContentFragment(LaunchFragment.class);
         // TODO: 判断是否已导入钱包
-        if (false) {
+        if (true) {
             launchHome();
             finish();
         }

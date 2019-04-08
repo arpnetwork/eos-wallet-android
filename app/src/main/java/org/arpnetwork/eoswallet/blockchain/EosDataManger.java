@@ -1,6 +1,7 @@
 package org.arpnetwork.eoswallet.blockchain;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.arpnetwork.eoswallet.base.BaseUrl;
 import org.arpnetwork.eoswallet.blockchain.api.EosChainInfo;
@@ -22,6 +23,7 @@ import org.arpnetwork.eoswallet.misc.Constant;
 import org.arpnetwork.eoswallet.net.HttpUtils;
 import org.arpnetwork.eoswallet.net.callbck.JsonCallback;
 import org.arpnetwork.eoswallet.util.Util;
+import org.arpnetwork.eoswallet.util.PreferenceManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -195,5 +197,20 @@ public class EosDataManger {
         RequreKeyResult requiredKey = getRequiredKeys(txnBeforeSign);
         SignedTransaction stxn = mWalletMgr.signTransaction(txnBeforeSign, requiredKey.getKeys(), new TypeChainId(currentBlockInfo.getChain_id()));
         return new PackedTransaction(stxn);
+    }
+
+    public static void getEOSPrice() {
+        HttpUtils.getRequets(BaseUrl.HTTP_GET_EOS_PRICE, "", null, new JsonCallback<Float>() {
+            @Override
+            public void onSuccess(Response<Float> response) {
+                Log.d("EOS", "price = " + response.body());
+                PreferenceManager.getInstance().putFloat(Constant.EOS_PRICE, response.body());
+            }
+
+            @Override
+            public void onError(Response<Float> response) {
+                super.onError(response);
+            }
+        });
     }
 }
