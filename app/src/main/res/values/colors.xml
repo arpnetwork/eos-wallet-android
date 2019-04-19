@@ -11,12 +11,12 @@
     <color name="title_divider">#c7c7c7</color>
     <color name="main_title_text_color">#2e2e2e</color>
 
-    <color name="tab_text_normal">#4a4a4a</color>
-    <color name="tab_text_pressed">@color/colorPrimary</color>
+    <color name="tab_text_normal">#666666</color>
+    <color name="tab_text_pressed">#3a6ef3</color>
 
     <color name="tip_text_color">#9A9A9A</color>
-    <color name="password_type_1_text">#ff0000</color>
-    <color name="password_type_2_text">#00ffff</color>
+    <color name="password_type_1_text">#ff5400</color>
+    <color name="password_type_2_text">#ffe400</color>
     <color name="password_type_3_text">#44E134</color>
     <color name="tab_indicator_text_normal">#666666</color>
     <color name="tab_indicator_text_pressed">#396BF2</color>

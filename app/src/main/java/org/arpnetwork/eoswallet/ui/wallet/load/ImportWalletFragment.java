@@ -72,8 +72,6 @@ public class ImportWalletFragment extends ScanNeededFragment {
                 String pwTip = mPasswordTipET.getText().toString();
                 if (TextUtils.isEmpty(pvtKey)) {
                     UIHelper.showToast(getContext(), R.string.enter_private_key);
-                } else if (TextUtils.isEmpty(pwTip)) {
-                    UIHelper.showToast(getContext(), R.string.enter_password_tip);
                 } else if (mCheckPolicyView.isCheck() && mPasswordView.getPassword() != null) {
                     EosPrivateKey pvt = null;
                     try {

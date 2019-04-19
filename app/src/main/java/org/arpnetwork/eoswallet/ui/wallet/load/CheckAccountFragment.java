@@ -48,8 +48,7 @@ public class CheckAccountFragment extends BaseFragment {
             public void onClick(View view) {
                 String publicKey = getPublicKey();
                 if (publicKey == null) {
-                    // TODO: 提示私钥错误，修改图片
-                    UIHelper.showImageToast(getContext(), R.drawable.no_photo, R.string.key_error);
+                    UIHelper.showImageToast(getContext(), R.drawable.toast_failed, R.string.key_error);
                 } else {
                     mPublicKeyTV.setText(publicKey);
                     mPublicKeyTV.setVisibility(View.VISIBLE);

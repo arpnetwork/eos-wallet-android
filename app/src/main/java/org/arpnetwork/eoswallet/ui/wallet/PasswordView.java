@@ -3,7 +3,6 @@ package org.arpnetwork.eoswallet.ui.wallet;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -97,31 +96,36 @@ public class PasswordView extends LinearLayout {
                 UIHelper.showToast(getContext(), R.string.illegal_password);
                 break;
 
-            case 0:
-                UIHelper.showToast(getContext(), R.string.enter_password);
-                break;
-
             case 1:
                 mPWTypeTV.setTextColor(getResources().getColor(R.color.password_type_1_text));
                 mPWTypeTV.setText(R.string.password_type_1);
+                mPWTypeIV.setImageResource(R.drawable.password_type_1);
                 break;
 
             case 2:
                 mPWTypeTV.setTextColor(getResources().getColor(R.color.password_type_2_text));
                 mPWTypeTV.setText(R.string.password_type_2);
+                mPWTypeIV.setImageResource(R.drawable.password_type_2);
                 break;
 
             case 3:
                 mPWTypeTV.setTextColor(getResources().getColor(R.color.password_type_3_text));
                 mPWTypeTV.setText(R.string.password_type_3);
+                mPWTypeIV.setImageResource(R.drawable.password_type_3);
+                break;
+
+            case 4:
+                mPWTypeTV.setTextColor(getResources().getColor(R.color.password_type_3_text));
+                mPWTypeTV.setText(R.string.password_type_3);
+                mPWTypeIV.setImageResource(R.drawable.password_type_4);
                 break;
         }
     }
 
     private boolean checkPassword() {
         String password = mPasswordET.getText().toString();
-        if (TextUtils.isEmpty(password)) {
-            UIHelper.showToast(getContext(), R.string.enter_password);
+        if (Util.evaluatePassword(password) == 0) {
+            UIHelper.showToast(getContext(), R.string.enter_illegal_password);
             return false;
         }
          if (!password.equals(mConfirmPWET.getText().toString())) {

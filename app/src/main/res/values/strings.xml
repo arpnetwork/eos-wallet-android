@@ -60,9 +60,8 @@
     <string name="import_account">导入账号</string>
     <string name="create_account">创建账号</string>
 
-    <!--创建账号-->
-    <string name="create_tip_1">*密码用于保护私钥和交易授权，强度非常重要</string>
-    <string name="create_tip_2">*EOS Wallet 不储存密码，而无法帮您找回，请务必牢记</string>
+    <!--创建钱包-->
+    <string name="create_wallet_tip">* 钱包密码用于保护私钥和交易授权，因此请尽量复杂\n* 我们不存储用户密码，因此无法帮您找回密码</string>
     <string name="wallet_type_eos">钱包体系：EOS底层</string>
     <string name="account_name">账号名称：</string>
     <string name="set_password">设置密码：</string>
@@ -75,9 +74,19 @@
     <string name="password_type_3">强</string>
     <string name="illegal_password">密法请勿包含非法字符</string>
     <string name="password_confirm_failed">两次输入密码不相同，请检查</string>
-    <string name="enter_password">请输入密码</string>
+    <string name="enter_illegal_password">请输入至少8位数密码</string>
     <string name="enter_account_name">请输入账户名称</string>
     <string name="create_wallet_failed">创建钱包失败：</string>
+    <string name="creating_wallet_tip">验证私钥成功，请等待自动分配账户...\n此过程大约需要1分钟......</string>
+
+    <!--分配账号-->
+    <string name="assign_account">分配账号</string>
+    <string name="assign_account_tip">*EOS账户创建需要抵押（可以理解为押金）一部分资金，这部分由我们为您预先支付，因此您需要支付这部分押金 （约20个BHKD）</string>
+    <string name="account_name_for_you">为您创建的账户用户名：</string>
+    <string name="BHKD_balance">当前BHKD：%d 个</string>
+    <string name="BHKD_tip">您可以通过场外交易购买BHKD并充值到上面专属账户下</string>
+    <string name="refresh">刷新</string>
+    <string name="active">激活</string>
 
     <!--导入钱包-->
     <string name="import_wallet">导入钱包</string>
@@ -93,8 +102,7 @@
 
     <!--备份私钥-->
     <string name="backup_private_key">备份私钥</string>
-    <string name="copy_your_private_key">抄写下你的钱包私钥</string>
-    <string name="copy_your_private_key_detail">私钥用于恢复钱包或重置钱包密码，将它准确地抄写在纸上，并存放在只有你知道地安全地地方。请注意：空格只是为了方便抄写，私钥本身不包含空格。</string>
+    <string name="backup_private_key_detail">* 私钥是找回钱包的唯一途径，请务必小心保管;\n* 我们不会存储您的私钥;\n* 请不要截图，尽量使用手抄，以免私钥泄露。</string>
     <string name="remembered">我记住了</string>
     <string name="check_your_private_key">确认你的钱包私钥</string>
     <string name="check_your_private_key_detail">请输入钱包私钥，验证备份的私钥是否正确</string>
@@ -106,7 +114,7 @@
     <string name="key_error">无效的私钥地址\n请确认是否抄写正确</string>
     <string name="illegal_private_key">私钥输入错误</string>
     <string name="check_failed">私钥验证错误\n请重新确认</string>
-    <string name="check_success">备份成功</string>
+    <string name="check_success">验证私钥成功，请等待自动分配账户...\n此过程大约需要1分钟......</string>
 
     <!--交易详情-->
     <string name="transaction_details">交易详情</string>

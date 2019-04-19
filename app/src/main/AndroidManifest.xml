@@ -52,6 +52,9 @@
             android:name=".ui.wallet.create.BackupPrivateKeyActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".ui.wallet.create.AssignAccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ui.wallet.load.ImportWalletActivity"
             android:screenOrientation="portrait" />
         <activity

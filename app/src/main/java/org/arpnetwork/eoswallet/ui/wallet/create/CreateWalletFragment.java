@@ -1,11 +1,9 @@
 package org.arpnetwork.eoswallet.ui.wallet.create;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import org.arpnetwork.eoswallet.R;
 import org.arpnetwork.eoswallet.base.BaseFragment;
@@ -14,6 +12,7 @@ import org.arpnetwork.eoswallet.blockchain.wallet.EosWalletManager;
 import org.arpnetwork.eoswallet.misc.Constant;
 import org.arpnetwork.eoswallet.ui.wallet.CheckPolicyView;
 import org.arpnetwork.eoswallet.ui.wallet.PasswordView;
+import org.arpnetwork.eoswallet.ui.wallet.StepIndicatorView;
 import org.arpnetwork.eoswallet.util.PreferenceManager;
 import org.arpnetwork.eoswallet.util.UIHelper;
 
@@ -22,7 +21,6 @@ import java.io.IOException;
 
 public class CreateWalletFragment extends BaseFragment {
 
-    EditText mAccountNameET;
     PasswordView mPasswordView;
     CheckPolicyView mCheckPolicyView;
 
@@ -39,16 +37,16 @@ public class CreateWalletFragment extends BaseFragment {
     }
 
     private void initView() {
-        mAccountNameET = (EditText) findViewById(R.id.et_account_name);
+        StepIndicatorView stepView = (StepIndicatorView) findViewById(R.id.step_view);
+        stepView.setTotalAndIndicate(3, 1);
+
         mPasswordView = (PasswordView) findViewById(R.id.v_password);
         mCheckPolicyView = (CheckPolicyView) findViewById(R.id.v_policy);
 
         findViewById(R.id.btn_create_wallet).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (TextUtils.isEmpty(mAccountNameET.getText().toString())) {
-                    UIHelper.showToast(getContext(), R.string.enter_account_name);
-                } else if (mCheckPolicyView.isCheck() && mPasswordView.getPassword() != null) {
+                if (mCheckPolicyView.isCheck() && mPasswordView.getPassword() != null) {
                     createWallet();
                 }
             }
@@ -66,6 +64,8 @@ public class CreateWalletFragment extends BaseFragment {
             }
             debugLog("create wallet, wallet name = " + Constant.WALLET_NAME + ", password = " + password);
             PreferenceManager.getInstance().putString(Constant.WALLET_PASSWORD, password);
+        } else {
+            walletManager.open(Constant.WALLET_NAME);
         }
         if (walletManager.isLocked(Constant.WALLET_NAME)) {
             walletManager.unlock(Constant.WALLET_NAME, PreferenceManager.getInstance().getString(Constant.WALLET_PASSWORD));

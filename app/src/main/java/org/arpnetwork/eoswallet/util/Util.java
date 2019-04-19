@@ -16,10 +16,9 @@ public class Util {
      * @return 0：空字符 -1：非法输入 其他:密码强度
      */
     public static int evaluatePassword(String passwordStr) {
-        if (TextUtils.equals("", passwordStr)) {
+        if (TextUtils.isEmpty(passwordStr) || passwordStr.length() < 8) {
             return 0;
         }
-
         if (passwordStr.matches("\\d*") ||
                 passwordStr.matches("[a-zA-Z]+") ||
                 passwordStr.matches("\\W+$")) {
@@ -31,6 +30,9 @@ public class Util {
             return 2;
         }
         if (passwordStr.matches("[\\w\\W]*")) {
+            if (passwordStr.matches(".*[a-z].*") && passwordStr.matches(".*[A-Z].*")) {
+                return 4;
+            }
             return 3;
         }
         return -1;

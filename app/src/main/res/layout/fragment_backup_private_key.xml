@@ -5,54 +5,89 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="@dimen/horizontal_margin"
-        android:paddingRight="@dimen/horizontal_margin">
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:gravity="center"
-            android:textSize="15sp"
-            android:textColor="@color/title_text_color"
-            android:textStyle="bold"
-            android:text="@string/copy_your_private_key" />
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_detail"
+        <org.arpnetwork.eoswallet.ui.wallet.StepIndicatorView
+            android:id="@+id/step_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:gravity="center"
-            android:textSize="13sp"
-            android:textColor="#666666"
-            android:text="@string/copy_your_private_key_detail" />
+            android:layout_height="35dp"
+            android:layout_marginTop="14dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical">
-            <EditText
-                android:id="@+id/et_private_key"
-                android:layout_width="match_parent"
-                android:layout_height="98dp"
-                android:padding="15dp"
-                android:textSize="@dimen/item_title_text_size"
-                android:hint="@string/enter_private_key"
-                android:background="@drawable/edit_text_big_bg"
-                android:elevation="3dp"/>
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingLeft="@dimen/horizontal_margin"
+            android:paddingRight="@dimen/horizontal_margin">
 
-        <Button
-            android:id="@+id/btn_next_step"
-            android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/tv_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="@string/backup_private_key_detail"
+                android:textColor="#666666"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/et_private_key"
+                    android:layout_width="match_parent"
+                    android:layout_height="98dp"
+                    android:background="@drawable/edit_text_big_bg"
+                    android:elevation="3dp"
+                    android:hint="@string/enter_private_key"
+                    android:padding="15dp"
+                    android:textSize="@dimen/item_title_text_size" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_next_step"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="42dp"
+                android:background="@drawable/round_corner_bg_solid_primary"
+                android:text="@string/remembered"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/pb_assign_account"
+        android:layout_width="310dp"
+        android:layout_height="180dp"
+        android:background="@drawable/round_corner_toast_bg"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/iv_toast"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center_horizontal"
+            android:indeterminateTint="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/tv_toast"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="42dp"
-            android:background="@drawable/btn_round_corner_bg"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/check_success"
             android:textColor="@android:color/white"
-            android:text="@string/remembered"/>
+            android:textSize="15sp" />
+
     </LinearLayout>
 </FrameLayout>

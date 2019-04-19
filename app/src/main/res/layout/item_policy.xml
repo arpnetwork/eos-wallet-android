@@ -12,9 +12,8 @@
         android:textSize="@dimen/tip_text_size"
         android:textColor="@color/tip_text_color"
         android:paddingLeft="5dp"
+        android:button="@drawable/btn_checkbox"
         android:text="@string/i_have_read"/>
-
-    <!--android:button="@drawable/btn_checkbox"-->
 
     <TextView
         android:id="@+id/btn_policy"

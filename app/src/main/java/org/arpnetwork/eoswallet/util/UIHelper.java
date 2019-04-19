@@ -3,6 +3,8 @@ package org.arpnetwork.eoswallet.util;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Build;
+import android.text.SpannableString;
+import android.text.style.LeadingMarginSpan;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -193,4 +195,10 @@ public class UIHelper {
 
     }
 
+    public static void setIndentationText(Context context, TextView textView, String string) {
+        SpannableString spannableString =new SpannableString(string);
+        LeadingMarginSpan.Standard what =new LeadingMarginSpan.Standard(0, UIHelper.dip2px(context, 6));
+        spannableString.setSpan(what, 0, spannableString.length(), SpannableString.SPAN_INCLUSIVE_INCLUSIVE);
+        textView.setText(spannableString);
+    }
 }

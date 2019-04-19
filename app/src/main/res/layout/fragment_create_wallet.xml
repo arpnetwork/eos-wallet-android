@@ -5,57 +5,39 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <org.arpnetwork.eoswallet.ui.wallet.StepIndicatorView
+        android:id="@+id/step_view"
+        android:layout_marginTop="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="35dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="19dp"
         android:orientation="vertical"
+        android:gravity="center_horizontal"
         android:paddingLeft="@dimen/horizontal_margin"
         android:paddingRight="@dimen/horizontal_margin">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/tip_text_size"
             android:textColor="@color/tip_text_color"
-            android:text="@string/create_tip_1"/>
+            android:text="@string/create_wallet_tip"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:textSize="@dimen/tip_text_size"
-            android:textColor="@color/tip_text_color"
-            android:text="@string/create_tip_2"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="24dp"
         android:orientation="vertical"
         android:paddingLeft="@dimen/horizontal_margin"
         android:paddingRight="@dimen/horizontal_margin"
         android:background="@android:color/white">
 
-        <LinearLayout style="@style/SingleLineItemLayout">
-            <TextView
-                style="@style/ItemTitleTextView"
-                android:text="@string/wallet_type_eos"/>
-        </LinearLayout>
-        <View style="@style/Divider" />
-
-        <LinearLayout style="@style/SingleLineItemLayout">
-            <TextView
-                style="@style/ItemTitleTextView"
-                android:text="@string/account_name"/>
-
-            <EditText
-                android:id="@+id/et_account_name"
-                style="@style/ItemEditTextView"/>
-
-        </LinearLayout>
-        <View style="@style/Divider" />
 
        <org.arpnetwork.eoswallet.ui.wallet.PasswordView
            android:id="@+id/v_password"
@@ -75,11 +57,11 @@
         android:id="@+id/btn_create_wallet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="35dp"
         android:layout_marginLeft="@dimen/horizontal_margin"
         android:layout_marginRight="@dimen/horizontal_margin"
-        android:background="@drawable/btn_round_corner_bg"
-        android:textColor="@android:color/white"
+        android:background="@drawable/round_corner_white_solid_primary_stroke_bg"
+        android:textColor="@color/colorPrimary"
         android:text="@string/create_wallet"/>
 
 </LinearLayout>

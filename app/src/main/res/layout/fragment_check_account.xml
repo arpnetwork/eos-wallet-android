@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/btn_round_corner_bg"
+        android:background="@drawable/round_corner_bg_solid_primary"
         android:textColor="@android:color/white"
         android:text="@string/check_private_key"/>
 
@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
-        android:background="@drawable/btn_round_corner_bg"
+        android:background="@drawable/round_corner_bg_solid_primary"
         android:textColor="@android:color/white"
         android:visibility="gone"
         android:text="@string/check_account"/>
@@ -64,6 +64,6 @@
         android:textColor="#333333"
         android:textSize="14sp"
         android:visibility="gone"
-        android:background="@drawable/edit_text_big_bg" />
+        android:background="@drawable/round_corner_bg_solid_primary" />
 
 </LinearLayout>
